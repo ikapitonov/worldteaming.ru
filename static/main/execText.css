@@ -1,0 +1,18 @@
+@charset "UTF-8"; 
+
+
+.execMain {
+
+}
+.execMain a {
+	color: #2a5885;
+	letter-spacing: 0.1;
+	display: inline-block;
+	text-decoration: none;
+}
+.execMain a:hover {
+	text-decoration: underline;
+}
+.execMain i {
+	display: inline-block;
+}

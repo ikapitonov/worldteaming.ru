@@ -1,0 +1,146 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#startup_wrapper_2divs {
+    width: 1140px;
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    margin-top: 70px;
+}
+#startup_wrapper_left {
+    width: 807px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background-color: white;
+    height: auto;
+    position: relative;
+}
+#startup_wrapper_right {
+    width: 320px;
+    height: auto;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    background-color: white;
+}
+.startup_wrap_padding {
+    padding: 0 20px 20px 20px;
+    width: all;
+}
+#navbar_startups_forum {
+    width: all;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom: 1px solid #e8e9ed;
+    background-color: #fafbfc;
+    margin-bottom: 5px;
+    position: relative;
+}
+#navbar_startups_wrap_items {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#navbar_startups_forum a {
+    text-decoration: none;
+}
+#navbar_startups_forum a:hover {
+    text-decoration: underline;
+}
+#startups_main_NAME {
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 400px;
+    font-weight: 400;
+    font-size: 16px;
+    display: block;
+    color: #656565;
+    letter-spacing: 0.6px;
+}
+#startups_main_NAME:hover {
+    text-decoration: underline;
+}
+#navbar_startups_forum i {
+    display: block;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #a3a6a8;
+}
+#startups_main_UNDERNAME {
+    font-size: 17px;
+    font-weight: 400;
+    text-shadow: none;
+    padding: 0;
+    margin: 0;
+    color: black;
+}
+
+
+
+
+.profile_left_header_info {
+    width: all;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    color: white;
+    background-color: #3498DB;
+    justify-content: center;
+    font-size: 16px;
+}
+.startup_menuSetting {
+    height: auto;
+    padding-bottom: 10px;
+    width: all;
+    padding-top: 10px;
+}
+.startup_menu_ITEM {
+    width: all;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    text-decoration: none;
+    color: #285473;
+    font-weight: 400;
+    font-size: 16px;
+    position: relative;
+}
+.startup_menu_ITEM:hover {
+    background-color: #F2f2f2;
+}
+.startup_menu_ITEM_border {
+    border-left: 5px solid #3498DB;
+    padding-left: 15px;
+    background-color: #fafafa;
+}
+
+
+
+
+#how_manyWantsdo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 23px;
+    width: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    background-color: #3498DB;
+    position: absolute;
+    right: 20px;
+    top: 13px;
+    font-size: 15px;
+    color: white;
+}
+
+
+
+

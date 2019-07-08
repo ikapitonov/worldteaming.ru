@@ -1,0 +1,327 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+#wrap_dialogsScroll {
+	position: fixed;
+	background-color: #F2F2F2;
+	width: 100%;
+	min-width: 700px;
+	height: 20px;
+	top: 50px;
+	z-index: 5;
+}
+#wrapper_page_dialogs {
+	/*нужно поменять высоту для фильтров на 1140px*/
+	width: 700px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin: 0 auto;
+	background-color: white;
+	position: relative;
+}
+#search_dialogs {
+	position: fixed;
+	top: 70px;
+	left: 0;
+	right: 0;
+	background-color: white;
+	margin: 0 auto;
+	width: 700px;
+	height: 50px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+}
+.search_Icon1 {
+	width: 50px;
+	height: inherit;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 5px;
+}
+.search_Icon1 i {
+	font-size: 28px;
+	color: #285473;
+	display: block;
+}
+#search_dialogs form {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
+	height: 35px;
+}
+#search_dialogs form #search_inputReset {
+	display: none;
+}
+#search_dialogs form .labelForReset {
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	position: absolute;
+	right: 160px;
+}
+#search_dialogs form .labelForReset i {
+	font-size: 28px;
+	color: #285473;
+	display: block;
+}
+#search_dialogs form .labelForReset:hover i {
+	font-weight: 500;
+}
+#search_dialogs form .search_inputBtn {
+	width: 120px;
+	height: 35px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+    background-color: #3498DB;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+#search_dialogs form .search_inputMain {
+	height: 35px;
+	padding-left: 10px;
+	border: 1px solid #D3D9DE;
+	outline: none;
+	font-size: 16px;
+	border-radius: 5px;
+	width: 470px;
+}
+::-webkit-input-placeholder {
+	font-weight: 400;
+	color: #A7A7AA;
+	font-size: 14px;
+	padding-left: 10px;
+}
+
+
+
+
+
+
+#dialogs_items_under {
+	width: 700px;
+	height: 100vh;
+	position: fixed;
+	overflow: hidden;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	background-color: white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+#dialogs_items {
+	height: auto;
+	width: 700px;
+	position: relative;
+	z-index: 1;
+}
+#dialogs_up_items {
+	height: 120px;
+	width: inherit;
+}
+.main_dialog_item {
+	display: block;
+	width: inherit;
+	height: auto;
+	position: relative;
+	z-index: 2;
+	text-decoration: none;
+	margin-top: 1px;
+}
+.main_dialog_item.main_dialog_item_not_reed {
+	background-color: #EEEDED;
+    margin-top: 0;
+}
+.dialog_item_ME_not_reed {
+	background-color: #EEEDED;
+}
+.div_item_dialog {
+	width: all;
+	height: 55px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px 10px 20px;
+	border-bottom: 1px solid #D3D9DE;
+	transition: 0.1s ease;
+}
+
+
+.item_dialog_fotoUser {
+	width: 65px;
+	height: inherit;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.item_dialog_FOTO {
+	width: 55px;
+	height: inherit;
+	border-radius: 50%;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+.item_dialog_info {
+    height: inherit;
+    width: 590px;
+}
+.item_dialog_wrapInfo {
+	width: inherit;
+	height: 25px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 2px;
+}
+.dialogs_NAME {
+	max-width: 380px;
+	font-size: 16px;
+	white-space: nowrap;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	color: #080D22;
+	letter-spacing: 0.5px;
+	line-height: 17px;
+	text-decoration: none;
+}
+.item_dialog_infoMesHow {
+	height: 25px;
+    width: 595px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 2px;
+}
+.dialogs_DATE {
+	width: 150px;
+	display: flex;
+	justify-content: flex-end;
+	font-size: 14px;
+	color: #777777;
+}
+.dialogs_MESSAGE {
+	width: 500px;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	height: 25px;
+}
+.dialogs_MESSAGE_text_not_reed {
+    background-color: #EEEDED;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+.item_dialog_NOREED {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 22px;
+    width: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 5px;
+    background-color: #3498DB;
+    margin-right: 5px;
+    margin-top: 2px;
+}
+.item_dialog_NOREED span {
+	color: white;
+	/*color: #3498DB;*/
+    font-size: 14px;
+    display: block;
+}
+.dialogs_MESSAGE_me {
+    font-size: 16px;
+    color: #3498DB;
+    letter-spacing: 0.5px;
+    padding-right: 5px;
+}
+.dialogs_MESSAGE_text {
+    white-space: nowrap;
+	overflow: hidden;
+	font-size: 15px;
+	color: #080D22;
+}
+.dialogsFooter {
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+	height: 40px;
+	background-color: #f2f2f2;
+	left: 0;
+	z-index: 5;
+}
+.dialogsFooterShadow {
+	width: inherit;
+	height: 2px;
+	position: fixed;
+	bottom: 40px;
+	background-color: #D3D9DE;
+	z-index: 10;
+}
+.wrapper_wrappCounts {
+    width:  all;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #D3D9DE;
+}
+.wrappCounts {
+	width: all;
+    display: flex;
+    margin-right: 20px;
+    margin-left: 20px;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 35px;
+    background-color: #e1ecf4;
+    border-radius: 3px;
+    color: #33658a;
+    font-size: 16px;
+    font-size: 400;
+}
+.wrappCounts div {
+	text-align: center;
+}
+.wrappCounts div span {
+	font-weight: 500;
+	font-size: 500;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.clearFooter {
+	width: 1px;
+	height: 45px;
+	opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
+

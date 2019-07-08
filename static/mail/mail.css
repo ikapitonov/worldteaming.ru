@@ -1,0 +1,191 @@
+@charset "UTF-8";
+
+.wrapper_mail {
+	width: 700px;
+	position: relative;
+	margin-top: 70px;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	padding-bottom: 20px;
+	height: auto;
+}
+
+h1 {
+	font-weight: 500;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	color: #000000;
+	margin-bottom: 20px;
+	overflow: hidden;
+}
+
+.mail_img {
+	margin: 0 auto;
+	width: 200px;
+}
+.mail_img img {
+    width: inherit;
+}
+.mail_text {
+	padding-left: 20px;
+	padding-right: 20px;
+	width: all;
+	margin: 20px auto;
+	font-size: 18px;
+	text-align: center;
+	line-height: 1.5;
+	word-wrap: break-word;
+}
+.mail_text b {
+	font-weight: 500;
+}
+.mail_about_span {
+	font-size: 14px;
+	color: #777777;
+}
+.mail_wrap_func {
+	width: 500px;
+	margin: 0 auto;
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+#returnMail {
+	font-size: 16px;
+	width: auto;
+	display: block;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 35px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #D3D9DE;
+    color: #080D22;
+    position: relative;
+    background-color: white;
+}
+#returnMail:hover {
+    background-color: #F2f2F2;
+    border-radius: 3px;
+}
+.mail_change_wrap {
+	width: auto;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+
+}
+.btn_change_click {
+    cursor: pointer;
+	display: block;
+	margin-top: 9px;
+}
+.btn_change_click b {
+	font-weight: 500;
+}
+.changer_mail_wrap {
+	margin-top: 10px;
+}
+
+
+.changer_mail_wrap {
+    margin-top: 20px;
+}
+.changer_mail_wrap form {
+	width: auto;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+    align-items: flex-end;
+}
+.changer_mail_wrap form input {
+	display: block;
+}
+#inputTextChange {
+	width: 200px;
+	height: 30px;
+    font-size: 16px;
+	padding-left: 10px;
+    text-decoration: none;
+    font-size: 16px;
+    border: 1px solid #D3D9DE;
+    color: #080D22;
+    position: relative;
+    background-color: white;
+    outline: none;
+}
+#inputSubChange {
+	width: 90px;
+	height: 30px;
+	color: white;
+	outline: none;
+	border: none;
+	background-color: #3498DB;
+	font-size: 14px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 7px;
+}
+
+.changer_mail_wrapNONE {
+	display: none;
+}
+.returnTrue {
+	margin-left: 10px;
+	margin-top: 10px;
+	font-size: 14px;
+	color: #2a5885;
+	display: flex;
+	align-items: center;
+}
+.returnTrue span {
+	margin-left: 10px;
+    font-size: 16px;
+    font-weight: 500;
+}
+.errorChange {
+	width: auto;
+	word-wrap: break-word;
+	font-size: 14px;
+	margin-top: 10px;
+	color: #f65314;
+}
+.mailSucsses {
+	color: #7cBB00;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

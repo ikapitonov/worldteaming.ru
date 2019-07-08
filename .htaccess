@@ -1,0 +1,54 @@
+AddDefaultCharset UTF-8
+
+RewriteEngine On 
+
+# url с .php .html
+RewriteRule ^welcome$ index.php
+RewriteRule ^signin$ signin.php
+RewriteRule ^signup$ signup.php
+RewriteRule ^startups$ startups.php
+RewriteRule ^people$ people.php
+RewriteRule ^dialogs$ dialogs.php
+RewriteRule ^createStartup$ createStartup.php
+RewriteRule ^forget$ forget.php
+RewriteRule ^404$ 404.php
+
+# url с 1 get параметром
+RewriteRule  ^user-([0-9]+$)$ user.php?id=$1
+RewriteRule  ^user-([0-9]+)-page([0-9]+)$ user.php?id=$1&page=$2
+RewriteRule  ^startup-([0-9]+$)$ startup.php?id=$1
+RewriteRule ^edit-([0-9]+$)$ edit.php?id=$1
+RewriteRule ^update-([0-9]+$)$ update.php?id=$1
+RewriteRule ^teaming-([0-9]+$)$ teaming.php?id=$1
+RewriteRule ^insert-([0-9]+$)$ insert.php?id=$1
+RewriteRule ^taskWrite-([0-9]+$)$ taskWrite.php?id=$1
+RewriteRule ^messages-([0-9]+$)$ messages.php?id=$1
+RewriteRule ^formStart-([0-9]+$)$ formStart.php?id=$1
+RewriteRule ^dialogs-([0-9]+$)$ dialogs.php?id=$1
+RewriteRule ^dialogs-([0-9]+)&search=(.*)$ dialogs.php?id=$1&search=$2
+
+
+# url сложные сочетания
+RewriteRule  ^content-([a-z]+)-([0-9]+$)$ content.php?$1=$2
+RewriteRule ^section_([a-z]+)-([0-9]+$)$ section.php?$1=9&id=$2
+RewriteRule ^section_([a-z]+)-([0-9]+)-page([0-9]+)$ section.php?$1=9&id=$2&page=$3
+# RewriteRule ^forum_([a-z]+)_([0-9]+)-([0-9]+)&scroll=true$ forum.php?$1=$2&id=$3&scroll=true
+RewriteRule ^forum_([a-z]+)_([0-9]+)-([0-9]+)$ forum.php?$1=$2&id=$3
+RewriteRule ^forum_([a-z]+)_([0-9]+)-([0-9]+)-page([0-9]+)$ forum.php?$1=$2&id=$3&page=$4
+
+
+
+
+RewriteRule ^404$ 404.php
+ErrorDocument 404 https://worldteaming.ru/404
+
+<IfModule mod_headers.c>
+        Header append Cache-Control "no-store, no-cache, must-revalidate"
+</IfModule>
+ 
+# Заголовок Expires
+<IfModule mod_expires.c>
+        ExpiresActive On ExpiresDefault "now"
+</IfModule>
+
+

@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+
+#navbar_startups_forum {
+    width: all;
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom: 1px solid #e8e9ed;
+    background-color: #fafbfc;
+}
+#navbar_startups_wrap_items {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#navbar_startups_forum a {
+    text-decoration: none;
+}
+#navbar_startups_forum a:hover {
+    text-decoration: underline;
+}
+#startups_main_NAME {
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 400px;
+    font-weight: 400;
+    font-size: 16px;
+    display: block;
+    color: #656565;
+    letter-spacing: 0.6px;
+}
+#startups_main_NAME:hover {
+    text-decoration: underline;
+}
+#navbar_startups_forum i {
+    display: block;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #a3a6a8;
+}
+#startups_main_UNDERNAME {
+    font-size: 17px;
+    font-weight: 400;
+    text-shadow: none;
+    padding: 0;
+    margin: 0;
+    color: black;
+}
+.wrapper_btn_reset {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	right: 0;
+}
+.btnSettingForm {
+	border: none;
+	background-color: white;
+	font-size: 14px;
+	color: #080D22;
+	cursor: pointer;
+	text-decoration: none;
+	position: absolute;
+	right: 70px;
+
+}
+.btnSettingForm:hover {
+	text-decoration: underline;
+}
+.wrapper_btn_reset i {
+    color: #3498DB;
+    font-size: 20px;
+    position: absolute;
+    right: 204px;
+    opacity: 0;
+    transition: 0.1s ease;
+    box-shadow: none;
+    text-shadow: none;
+    display: block;
+}
+.wrapper_btn_reset i.check_boxDone {
+	opacity: 1;
+}
+
+.changePassJs {
+    margin-top: 10px;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #f65314;
+}
+
+/*7cBB00*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

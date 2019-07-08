@@ -1,0 +1,315 @@
+@charset "UTF-8";
+
+/*execCommand*/
+.wrapper_for_execCommand {
+	width: 650px;
+	height: 30px;
+	margin-top: 7px;
+	margin-bottom: 10px;
+	border-radius:5px;
+	border: none;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+}
+
+.wrapper_for_execCommand .btn_minimal_exec {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: none;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    margin-left: 5px;
+    border-radius: 5px;
+    color: #333333;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: 0.2s ease;
+}
+.wrapper_for_execCommand .btn_minimal_exec.btn_minimal_execActive {
+	background-color: #D8D8D8;
+	color: black;
+}
+#btn_exec_text_fields {
+	position: relative;
+}
+#btn_exec_text_fields_fonts_family {
+	position: absolute;
+	top: 40px;
+	width: 100px;
+	height: 100px;
+	background-color: black;
+	left: 0;
+}
+#btn_minimal_exec_text_format_hover {
+	position: relative;
+	transition: 0.2s ease;
+}
+#btn_minimal_exec_text_format_hover i {
+    font-size: 27px;
+}
+#btn_minimal_exec_text_format_hoverActive_modal {
+	position: absolute;
+	width: 140px;
+	height: 132px;
+	top: 28px;
+	left: -10px;
+	display: flex;
+	align-items: flex-end;
+	display: none;
+}
+#btn_minimal_exec_text_format_hover:hover #btn_minimal_exec_text_format_hoverActive_modal {
+    z-index: 1;
+    display: flex;
+} 
+.btn_minimal_exec_text_format_hoverActive {
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	width: 140px;
+	height: 120px;
+	border-radius: 5px;
+    background-color: white;
+    overflow: scroll;
+    cursor: default;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 16px;
+}
+.wrap_text_btn_minimal_exec_hover {
+    margin-top: 5px;
+    margin-left: 5px;
+}
+.btn_minimal_exec_text_format_hoverActive input {
+	height: 30px;
+	width: 140px;
+	text-align: left;
+	font-size: 14px;
+	color: #333333;
+	border: none;
+	background-color: white;
+	top: 5px;	
+	cursor: pointer;
+	display: block;
+	position: relative;
+}
+.btn_minimal_exec_text_format_hoverActive input.btn_minimal_execActive {
+	background-color: #D8D8D8;
+	color: black;
+}
+#btn_minimal_exec_text_format_Roboto {
+	margin-top: 5px;
+}
+
+#btn_minimal_exec_text_size_hover {
+	position: relative;
+	transition: 0.2s ease;
+}
+#btn_minimal_exec_text_size_hover:hover #btn_minimal_exec_text_size_hoverActive_modal {   
+    display: flex;
+    z-index: 1;
+} 
+#btn_minimal_exec_text_size_hoverActive_modal {
+	position: absolute;
+	width: 140px;
+	height: 132px;
+	top: 28px;
+	left: -10px;
+	display: flex;
+	align-items: flex-end;
+	display: none;
+}
+.btn_minimal_exec_text_size_hoverActive {
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	width: 140px;
+	height: 120px;
+	border-radius: 5px;
+    background-color: white;
+    overflow: scroll;
+    cursor: default;
+    color: #333333;
+    font-size: 16px;
+}
+.btn_minimal_exec_text_size_hoverActive input {
+	height: 30px;
+	width: 140px;
+	text-align: left;
+	font-size: 14px;
+	color: #333333;
+	border: none;
+	background-color: white;
+	top: 5px;	
+	cursor: pointer;
+	display: block;
+	position: relative;
+}
+.btn_minimal_exec_text_size_hoverActive input.btn_minimal_execActive {
+	background-color: #D8D8D8;
+	color: black;
+}
+
+/*помойка для пользователя*/
+#btn_minimal_exec_text_size8 {font-size: 8px; height: 16px;}
+#btn_minimal_exec_text_size14 {font-size: 14px; height: 28px;}
+#btn_minimal_exec_text_size16 {font-size: 16px; height: 32px;}
+#btn_minimal_exec_text_size20 {font-size: 20px; height: 25px;}
+#btn_minimal_exec_text_size24 {font-size: 24px; height: 30px;}
+#btn_minimal_exec_text_size36 {font-size: 36px; height: 40px;}
+#btn_minimal_exec_text_size48 {font-size: 48px; height: 50px;}
+
+
+#btn_minimal_exec_text_color_hover {
+	position: relative;
+	transition: 0.2s ease;
+}
+#btn_minimal_exec_text_color_hoverActive_modal {
+	position: absolute;
+	width: 180px;
+	height: 130px;
+	top: 28px;
+	left: -10px;
+	align-items: flex-end;
+	display: none;
+	cursor: default;
+}
+.btn_minimal_exec_text_color_hoverActive {
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	width: 180px;
+	height: 110px;
+	border-radius: 5px;
+    background-color: white;
+    overflow: scroll;
+    cursor: default;
+    color: #333333;
+    font-size: 16px;
+}
+.wrap_exec_command_input_color.btn_minimal_execActive {
+	outline: double;
+}
+.wrap_exec_command_input_color {
+	text-align: left;
+	font-size: 14px;
+	color: #333333;
+	border: none;
+	background-color: white;
+	margin-top: 5px;	
+	cursor: pointer;
+	position: relative;
+	width: 20px;
+	height: 20px;
+	background-color: black;
+	margin-left: 5px;
+	border: 5px;
+	/*outline: double;*/
+}
+#btn_minimal_exec_text_color_hover:hover #btn_minimal_exec_text_color_hoverActive_modal {
+    z-index: 1;
+    display: flex;
+}
+/*Внешний вид цвета текста*/
+#btn_minimal_exec_text_color1 {background-color: #333333;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color2 {background-color: black;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color3 {background-color: white;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color4 {background-color: #D8D8D8;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color5 {background-color: #998B8B;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color6 {background-color: #0500FF;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color7 {background-color: #1614A7;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color8 {background-color: #506CFF;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color9 {background-color: #EA00FF;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color10 {background-color: #FF001A;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color11 {background-color: #C80014;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color12 {background-color: #00FF92;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color13 {background-color: #00B065;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color14 {background-color: #00FF00;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color15 {background-color: #FFFA00;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color16 {background-color: #FFCF05;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color17 {background-color: #EEE523;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_text_color18 {background-color: #DB1010;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+
+
+
+
+
+#btn_minimal_exec_textBack_color_hover {
+	position: relative;
+	transition: 0.2s ease;
+}
+#btn_minimal_exec_textBack_color_hoverActive_modal {
+	position: absolute;
+	width: 180px;
+	height: 130px;
+	top: 28px;
+	left: -10px;
+	align-items: flex-end;	
+	display: none;
+	cursor: default;
+}
+
+#btn_minimal_exec_textBack_color_hover:hover #btn_minimal_exec_textBack_color_hoverActive_modal {
+    z-index: 1;
+    display: flex;
+}
+/*Внешний вид фона текста*/
+/*Внешний вид цвета текста*/
+#btn_minimal_exec_textBack_color1 {background-color: #333333;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color2 {background-color: black;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color3 {background-color: white;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color4 {background-color: #D8D8D8;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color5 {background-color: #998B8B;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color6 {background-color: #0500FF;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color7 {background-color: #1614A7;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color8 {background-color: #506CFF;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color9 {background-color: #EA00FF;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color10 {background-color: #FF001A;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color11 {background-color: #C80014;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color12 {background-color: #00FF92;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color13 {background-color: #00B065;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color14 {background-color: #00FF00;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color15 {background-color: #FFFA00;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color16 {background-color: #FFCF05;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color17 {background-color: #EEE523;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+#btn_minimal_exec_textBack_color18 {background-color: #DB1010;
+box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);}
+
+
+#btn_exec_strong {
+	margin-left: 0;
+}

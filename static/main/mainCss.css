@@ -1,0 +1,191 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+.item_a_main {
+	text-decoration: none;
+	font-weight: 500;
+    font-size: 16px;
+    line-height: 17px;
+    color: #2a5885;
+    letter-spacing: 0.5px;
+}
+.item_a_main:hover {
+	text-decoration: underline;
+}
+.item_h1_main {
+	font-weight: 400;
+	margin: 0;
+	padding: 0;
+	font-size: 19px;
+	color: #000000;
+	line-height: 25px;
+}
+.notFound_pickImg {
+	width: all;
+	height: 200px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: white;
+}
+.notFound_pickImg img {
+	height: inherit;
+	width: auto;
+}
+.cant_do_Functions {
+	width: all;
+	height: auto;
+	word-wrap: break-word;
+	font-size: 16px;
+}
+.cant_do_Functions b {
+	font-weight: 500;
+}
+.cant_do_Functions a {
+	text-decoration: none;
+	color: #33658a;
+} .cant_do_Functions a:hover { text-decoration:underline; }
+
+
+
+.txtControl {
+    line-height: 1.55;
+    letter-spacing: 0.15px;
+    overflow: hidden;
+    word-wrap: break-word;
+    white-space: pre-line;
+    position: relative;
+    text-overflow: ellipsis;
+}
+
+.namesHidden {
+	max-width: 380px;
+	white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+}
+.clearBottom {
+	width: 1px;
+	height: 10px;
+}
+
+
+.goLoginBlock {
+	font-size: 16px;
+	word-wrap: break-word;
+	overflow: hidden;
+	text-align: center;
+	line-height: 1.55;
+    letter-spacing: 0.15px;
+    color: #080D22;
+}
+.goLoginBlock b {
+	font-weight: 500;
+    color: #080D22;
+}
+
+.goLoginBloc img {
+	width: 40px;
+}
+.goLoginBlock .goLoginBTN {
+    text-decoration: none;
+	font-weight: 500;
+    font-size: 16px;
+    line-height: 17px;
+    color: #2a5885;
+    letter-spacing: 0.5px;
+    display: block;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 1px solid #D3D9DE;
+    height: 35px;
+    margin-top: 10px;
+}
+.goLoginBlock .goLoginBTN:hover {
+	text-decoration: underline;
+}
+
+.goLoginComments {
+    width: all;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+	word-wrap: break-word;
+	overflow: hidden;
+	line-height: 1.55;
+    letter-spacing: 0.15px;
+    color: #080D22;
+}
+.goLoginComments b {
+	font-weight: 500;
+    color: #080D22;
+}
+.goLoginComments .goLoginCommentsBtn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 35px;
+	padding-left: 10px;
+	padding-right: 10px;
+	width: 140px;
+	border: 1px solid #D3D9DE;
+	text-decoration: none;
+	font-weight: 500;
+    font-size: 16px;
+    line-height: 17px;
+    color: #2a5885;
+    letter-spacing: 0.5px;
+    margin-left: 20px;
+}
+.goLoginComments .goLoginCommentsBtn:hover {
+	text-decoration: underline;
+}
+.goLoginComments img {
+	width: 40px;
+	padding-top: 5px;
+	margin-left: 20px;
+}
+
+::-webkit-input-placeholder {
+	font-weight: 400;
+	color: #A7A7AA;
+	font-size: 14px;
+	padding-left: 10px;
+}
+
+
+.wrapper_gif_loader {
+	width: all;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: auto;
+	height: auto;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+.wrapper_gif_loader img {
+	width: 30px;
+	display: block;
+}
+
+
+.wrap_with_Fo {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+}
+
+
+
+
+

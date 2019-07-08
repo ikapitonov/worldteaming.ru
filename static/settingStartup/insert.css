@@ -1,0 +1,205 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+
+
+
+
+
+.item_forum_Com {
+    margin-top: 20px;
+    border-bottom: 2px solid #e8e9ed;
+    width: all;
+    height: auto;
+    display: flex;
+    position: relative;
+}
+.item_forum_Com_left {
+    width: 50px;
+    height: auto;
+}
+.item_forum_Com_right {
+    margin-left: 10px;
+    width: all;
+    height: auto;
+}
+.forum_Com_iThink {
+    width: 50px;
+    margin-top: 15px;
+    font-size: 25px;
+    display: flex;
+    justify-content: center;
+    font-weight: 500;
+}
+.forum_Com_right_UP {
+    width: all;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 7px;
+}
+.forum_Com_right_UP a , button {
+    display: block;
+}
+.forum_Com_right_btn_del {
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.forum_Com_right_btn_del i {
+    color: #C1C5CC;
+    font-size: 22px;
+}
+.forum_Com_right_btn_del i:hover {
+    color: #9BA1AC;
+}
+.forum_Com_right_TEXT {
+    font-size: 15px;
+    margin-top: 15px;
+    padding-left: 10px;
+}
+.forum_Com_right_TEXT_FULL {
+    font-size: 16px;
+    color: #42648b;
+    font-weight: 500;
+    cursor: pointer;
+    width: all;
+    margin-top: 5px;
+    padding-left: 10px;
+}
+.forum_Com_right_TEXT_FULL:hover {
+    text-decoration: underline;
+}
+.forum_item_under {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+    width: 707px;
+}
+
+.dateColor {
+    color: #777777;
+    font-size: 14px;
+}
+.forum_item_under_right {
+    color: #f65314;
+}
+.forum_item_under_left_1 {
+    color: #82b93c;
+    background-color: white;
+}
+
+.forum_item_under_left_2 {
+    color: #285473;
+}
+.forum_item_under_left {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+}
+.forum_item_under_btn {
+    width: all;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border: 1px solid #D3D9DE;
+    position: relative;
+    padding-left: 10px;
+    padding-right: 10px;
+    transition: 0.1s ease;
+}
+.forum_item_under_btn:hover {
+    text-decoration: underline;
+}
+.fromTaskSetting {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    background-color: #FFF8dc;
+    color: black;
+    margin-top: 10px;
+    width: all;
+    padding-left: 10px;
+    font-size: 16px;
+}
+.fromTaskSetting a {
+    color: #285473;
+    letter-spacing: 0.5px;
+    text-decoration: none;
+}
+.fromTaskSetting b {
+    font-weight: 500;
+    padding-left: 5px;
+}
+.fromTaskSetting a:hover {
+    text-decoration: underline;
+}
+
+.forum_ComUserfoto {
+    margin-left: 0;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+
+
+.addPeopleClass {
+    opacity: 0.8;
+}
+.btnAddPeople {
+    background-color: #7cBB00;
+    color: white;
+    border: 1px solid #7cBB00;
+    border-right: 3px;
+    transition: 0.1s ease;
+}
+.btnFalsePeople {
+    background-color: #f65314;
+    color: white;
+    border: 1px solid #f65314;;
+    border-right: 3px;
+    transition: 0.1s ease;
+}
+
+
+
+
+.selectAll {
+    color: #777777;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+.selectAll span {
+    padding-left: 10px;
+    color: #285473;
+    font-size: 16px;
+    display: block;
+    padding-top: 1px;
+    min-width: 20px;
+    text-align: right;
+    max-width: auto;
+}
+
+
+
+

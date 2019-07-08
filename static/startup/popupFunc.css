@@ -1,0 +1,320 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+#PopupMessage_modal {
+	width: 100vw;
+	height: 100vh;
+	position: fixed;
+	overflow: hidden;
+	opacity: 0;
+	background-color: #0E0606;
+	z-index: -10;
+	top: 0;
+}
+#PopupMessage_modal.PopupMessage_modalActive {
+	opacity: 0.4;
+	z-index: 16;
+}
+#wrapperPopupMessage {
+	width: 700px;
+    height: auto;
+	background-color: white;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+	position: fixed;
+	z-index: -10;
+	top: 70px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	opacity: 0;
+}
+#wrapperPopupMessage.wrapperPopupMessageActive {
+    z-index: 17;
+    opacity: 1;
+}
+#wrapperPopupMessage #PopupMessage_UP {
+    width: inherit;
+    height: 40px;
+    background-color: #3498DB;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#wrapperPopupMessage #PopupMessage_UP #PopupMessage_UP_right {
+	width: 60px;
+	height: 40px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#PopupMessage_UP_right button {
+	display: block;
+	height: inherit;
+	width: inherit;
+	border: none;
+	background-color: #3498DB;
+	color: white;
+	cursor: pointer;
+}
+#PopupMessage_UP_right button i {
+    font-size: 30px;
+    margin-top: 3px;
+    transition: 0.2s ease;
+}
+#PopupMessage_UP_right button i:hover {
+	font-weight: 700;
+}
+#PopupMessage_UP_left {
+	margin-left: 20px;
+}
+#PopupMessage_UP_left h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	color: white;
+	font-weight: 400;
+}
+#PopupMessage_bottom {
+	height: auto;
+	width: all;
+	padding: 15px 30px 15px 30px;
+}
+#PopupMessage_Userinfo {
+	width: all;
+	height: auto;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+#Message_UserFoto_wrap {
+    height: 50px;
+    width: 50px;
+}
+#Message_UserFoto {
+	width: inherit;
+	height: inherit;
+	border-radius: 50%;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#Message_UserTxt_wrap {
+	margin-left: 20px;
+	width: auto;
+	height: auto;
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+}
+#Message_UserTxt_wrap a:hover {
+	text-decoration: underline;
+}
+#Message_User_online {
+	font-size: 14px;
+    margin-top: 7px;
+}
+#PopupMessage_write {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	width: all;
+}
+#tittlePOPUP {
+	height: 30px;
+	width: 625px;
+	font-size: 16px;
+	outline: none;
+	border: 1px solid #D3D9DE;
+	padding-left: 10px;
+	display: block;
+	font-weight: 500;
+	color: #080D22;
+	margin-bottom: 15px;
+}
+::-webkit-input-placeholder {
+	font-weight: 400;
+	color: #A7A7AA;
+}
+#PopupMessage_write_text {
+	width: all;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	font-size: 14px;
+	margin-bottom: 5px;
+	padding: 0 10px;
+}
+#textarea_blog {
+	width: all;
+	min-height: 100px;
+    outline: none;
+    padding: 5px 10px;
+    border: 1px solid #D3D9DE;
+    max-height: 250px;
+    overflow: scroll;
+}
+#Message_btnSend_wrap {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.btn_onclick_do {
+	width: 100px;
+	height: 30px;
+	color: white;
+	outline: none;
+	border: none;
+	background-color: #3498DB;
+	font-size: 14px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+#functions_href_to_topic a {
+	color: #2a5885;
+	text-decoration: none;
+	letter-spacing: 0.5px;
+}
+#functions_href_to_topic a:hover {
+	text-decoration: underline;
+}
+#functions_href_to_topic a strong {
+	padding-left: 5px;
+	font-weight: 500;
+}
+
+
+.btn_send_wrapperR {
+	display: flex;
+	align-items: center;
+}
+.show_messageStatus {
+	margin-left: 10px;
+	font-weight: 14px;
+	opacity: 0;
+	transition: 0.2s ease;
+	font-size: 14px;
+}
+.show_messageStatus.show_messageStatusActive {
+	opacity: 1;
+	display: flex;
+	align-items: center;
+}
+.show_messageStatus i {
+	font-size: 25px;
+}
+.show_messageStatus b {
+	font-weight: 500;
+}
+
+
+
+.tranform_icon {
+    transform: rotate(180deg);
+    font-size: 23px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+
+.popupFunc_radios_wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: all;
+    height: auto;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+.popupFunc_radios_wrapper input {
+    display: none;
+}
+.btnIdea_Label {
+    height: 35px;
+    width: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: white;
+    border: 1px solid #D3D9DE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.1s ease;
+}
+#FbtnIdeaRadio1:checked ~ .btnIdea_Label1{
+    background-color: #82b93c;
+    color: white;
+    border-radius: 3px;
+    border: 1px solid #82b93c;
+}
+#FbtnIdeaRadio2:checked ~ .btnIdea_Label2{
+    color: white;
+    border-radius: 3px;
+    background-color: #3498DB;
+    border: 1px solid #3498DB;
+}
+#FbtnIdeaRadio3:checked ~ .btnIdea_Label3{
+    background-color: #f65314;
+    color: white;
+    border-radius: 3px;
+    border: 1px solid #f65314;
+}
+.btnIdea_Label1 {color: #82b93c;}
+.btnIdea_Label2 {color: #3498DB;}
+.btnIdea_Label3 {color: #f65314;}
+
+
+.popupFunc_radiosTask_wrapper {
+    width: 500px;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-left: 72px;
+}
+.popupFunc_radiosTask_wrapper input {
+    display: none;
+}
+.btnTask_Label {
+    width: auto;
+    height: 35px;
+    height: 35px;
+    width: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.1s ease;
+    border: 1px solid #D3D9DE;
+}
+
+#FbtnTaskRadio1:checked ~ .btnTask_Label1{
+    background-color: #82b93c;
+    color: white;
+    border-radius: 3px;
+    border: 1px solid #82b93c;
+}
+#FbtnTaskRadio2:checked ~ .btnTask_Label2{
+    color: white;
+    border-radius: 3px;
+    background-color: #3498DB;
+    border: 1px solid #3498DB;
+}
+#FbtnTaskRadio3:checked ~ .btnTask_Label3{
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.btnTask_Label1 {color: #82b93c;}
+.btnTask_Label2 {color: #3498DB;}
+.btnTask_Label3 {color: #285473;}
+
+
+
+

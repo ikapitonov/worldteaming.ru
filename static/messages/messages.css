@@ -1,0 +1,357 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	height: auto;
+}
+
+#message_main_wrapper {
+	width: 1140px;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	height: 100vh;
+	margin: 0 auto;
+	position: relative;
+	top: 0;	
+}
+#message_right_side_wrap {
+	position: relative;
+	width: 527px;
+}
+#message_right_side {
+	width: inherit;
+	height: auto;
+	margin-top: 70px;
+	background-color: white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	position: fixed;
+	z-index: 2;
+}
+#message_right_headEr {
+	width: inherit;
+	height: 50px;
+	display: flex;
+	align-items: center;
+	color: white;
+	background-color: #3498DB;
+	justify-content: center;
+}
+#message_right_wrapper {
+	padding: 10px 20px 20px 20px;
+	height: auto;
+	width: all;
+}
+#textarea_blog {
+	width: all;
+	min-height: 100px;
+    outline: none;
+    padding: 3px 6px;
+    border: 1px solid #D3D9DE;
+    max-height: 357px;
+    overflow: scroll;
+}
+#message_textarea_BIG_send_wrapper {
+	margin-top: 10px;
+	width: all;
+	height: auto;
+	display: flex;
+	justify-content: flex-start;
+}
+#Message_btnSend {
+	width: 100px;
+	height: 30px;
+	color: white;
+	outline: none;
+	border: none;
+	background-color: #3498DB;
+	font-size: 14px;
+	border-radius: 5px;
+	cursor: pointer;
+	margin-top: 5px;
+}
+
+
+
+
+#message_left_side {
+	width: 600px;
+	height: inherit;
+}
+#message_left_upInfo {
+	width: inherit;
+	height: 50px;
+	top: 70px;
+	background-color: white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+}
+#message_another_user_foto {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat; 
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+
+#message_left_textarea {
+	position: fixed;
+	min-height: 50px;
+	width: inherit;
+	background-color: #FAFAFA;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	bottom: 20px;
+	z-index: 2;
+	border-top: 1px solid #D3D9DE;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+}
+#message_textarea_small {
+	width: 477px;
+	height: 20px;
+	outline: none;
+	resize: none;
+	border-radius: 5px;
+    outline: none;
+    padding: 5px 10px 5px 10px;
+    border: 1px solid #D3D9DE;
+    max-height: 150px;
+    overflow: scroll;
+    background-color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+::-webkit-input-placeholder {
+	font-weight: 400;
+	color: #A7A7AA;
+	font-size: 14px;
+	padding-left: 10px;
+}
+#message_left_textarea #Message_btnSend_small {
+	width: 50px;
+	height: 50px;
+	background-color: #FAFAFA;
+	outline: none;
+	border: none;
+	cursor: pointer;
+	margin-left: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#message_left_undexTextarea {
+	position: fixed;
+	background-color: #F2F2F2;
+	width: inherit;
+	height: 20px;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 1;
+}
+#message_left_upInfoUP {
+	width: 100%;
+	height: 20px;
+    position: fixed;
+    background-color: #F2F2F2;
+    top: 50px;
+    left: 0;
+    z-index: 1;
+}
+
+#message_left_mainMes {
+	width: inherit;
+	min-height: 100vh;
+	background-color: white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: nowrap;
+}
+#Messanger_clearBottom {
+	height: 125px;
+	width: inherit;
+	background-color: white;
+}
+#Messanger_clearTop {
+	width: inherit;
+	height: 80px;
+	background-color: white;
+}
+#Messanger_wrapperITEMS {
+	width: inherit;
+	height: auto;
+}
+#Messanger_wrapperITEMS_ul {
+	padding: 0 20px 0 20px;
+	margin: 0;
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: center;
+	width: inherit;
+	height: auto;
+	list-style: none;
+}
+#Messanger_creater_wrap {
+	padding: 0 20px 0 20px;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	width: inherit;
+	height: auto;
+	list-style: none;
+}
+.Messanger_item {
+	width: 560px;
+}
+.Messanger_item_Inherit {
+	min-width: auto;
+	max-width: 500px;
+	padding: 7px 10px;
+	background-color: white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	margin-top: 5px;
+	margin-bottom: 5px;
+	border-radius: 5px;
+	display: flex;
+	justify-content: center;
+}
+.Messanger_item_Inherit_left {
+    float: left;
+    background-color: #F2F2F2;
+}
+.Messanger_item_Inherit_right {
+	float: right;
+	border-top: 1px solid #D3D9DE;
+}
+.Messanger_item_Text {
+    margin-right: 15px;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+.Messanger_item_Date_not_me {
+	width: 30px;
+    font-size: 12px;
+    color: #8D8D90;
+    height: inherit;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.Messanger_wrapper_Date_Post {
+	width: 50px;
+    font-size: 12px;
+    color: #8D8D90;
+    height: inherit;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+.Messanger_item_Post_TO {
+	position: relative;
+	display: flex;
+	height: inherit;
+	align-items: flex-end;
+	justify-content: flex-end;
+}
+.Messanger_item_Post_TO i {
+	font-size: 18px;
+}
+.Messanger_item_Post_TO i.material-icons_reedIt {
+	color: #3498DB;
+	font-size: 18px;
+}
+.Messanger_no_message {
+	margin: 0 auto;
+	margin-bottom: 200px;
+}
+
+
+
+
+
+#navbar_startups_forum {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #fafbfc;
+}
+#navbar_startups_forum h1 {
+	margin: 0;
+	padding: 0;
+	font-size: 16px;
+	font-weight: 400;
+}
+#navbar_startups_wrap_items {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+#navbar_startups_forum a {
+    text-decoration: none;
+}
+#navbar_startups_forum a:hover {
+    text-decoration: underline;
+}
+#startups_main_NAME {
+    font-weight: 400;
+    font-size: 16px;
+    display: block;
+    color: #656565;
+    letter-spacing: 0.6px;
+}
+#startups_main_NAME:hover {
+    text-decoration: underline;
+}
+#navbar_startups_forum i {
+    display: block;
+    padding-left: 5px;
+    padding-right: 5px;
+    color: #a3a6a8;f
+}
+#startups_main_UNDERNAME {
+    font-size: 16px;
+    font-weight: 400;
+    text-shadow: none;
+    padding: 0;
+    margin: 0;
+    color: #080D22;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 380px;
+    display: block;
+}
+.tranform_icon {
+	transform: rotate(180deg);
+	color: #3498DB;
+	font-size: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
