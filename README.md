@@ -1,2 +1,4 @@
 # worldteaming.ru
-my first project!
+My first project!
+
+Skills: PHP, SQL, Javascript (Ajax, Json, Jquery), html, css.
