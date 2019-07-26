@@ -11,7 +11,7 @@ if ( $_POST['send_message'] == 'отправить сообщение с message
   $from_who  = $_SESSION['id'];
   $TextSmall = htmlspecialchars($_POST['valueT']);
 
-  $sqlUpdate = "UPDATE userDialogs SET last_message=:last_message, from_who =:from_who,
+  $sqlUpdate = "UPDATE userDialogs SET last_message=:last_message, from_who =:from_who, `date`=NOW(),
                        to_who=:to_who,
   	                   reed=:reed, how_many_reed=how_many_reed+1
   	                   WHERE id=:id";

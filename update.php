@@ -282,7 +282,7 @@ if (count($_POST) > 0 && isset($_POST['submit'])) {
   $stmtUpdateMain->execute([':name' => ucfirst(mb_substr(strip_tags($stNameUp),0,40)), ':status' => $statusSql, ':type' => $categSql,':area' => $areaSql ]);
 
   if ($stmtUpdateMain) { ?>
-    <script type="text/javascript">location="user-<?php echo $getURLid; ?>"</script>
+    <script type="text/javascript">location="startup-<?php echo $getURLid; ?>"</script>
   <?php }
   
 }

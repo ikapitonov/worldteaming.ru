@@ -17,6 +17,10 @@
 	</div>
 </footer>
 </div>
+<?php if (!empty($_SESSION['auth']) || $_SESSION['auth']) {  ?>
+	<link rel="stylesheet" type="text/css" href="static/main/newMess.css">
+	<script type="text/javascript" src="static/main/newMess.js"></script>
+<?php } ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
 </html>

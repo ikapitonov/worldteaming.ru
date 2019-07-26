@@ -81,9 +81,6 @@ if (count($_POST) > 0 && isset($_POST['changePass'])) {
 
 }
 
-
-
-
 ?>
 <title>Смена пароля</title>
 <link rel="stylesheet" type="text/css" href="static/sign/sign.css">

@@ -60,7 +60,7 @@ if ($dialogNumber == 0) {
             <div id="Message_UserTxt_wrap">
                 <div><a class="item_a_main" href="user-<?php echo $getURLid; ?>"><?php echo $itemTake['name'] . " " .$itemTake['lastname']; ?></a></div>
                 <?php echo "<div id='dialogNumber' style='display: none'>$dialogNumber</div>";  ?>
-                <div id='Message_User_online'><?php echo $itemsStaticInfo['status']; ?></div>
+                <div id='Message_User_online'><?php echo $online_user; ?></div>
             </div>
         </div>
         <div id="PopupMessage_write">

@@ -1,5 +1,6 @@
 <?php include "header.php"; ?>
 
+
 <title>WorldTeaming</title>
 <link rel="stylesheet" type="text/css" href="static/Index/index.css">
 <div class="wrap_with_Fo">

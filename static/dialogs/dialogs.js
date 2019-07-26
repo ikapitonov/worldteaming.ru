@@ -48,8 +48,9 @@ window.addEventListener('DOMContentLoaded', function() {
 			            		var mainItem_a = document.createElement('a');
 	       							document.getElementById('append_ajax').appendChild(mainItem_a);
 	       							mainItem_a.classList.add('main_dialog_item');
-	       							if (data[i]['reed'] == 0 && data[i]['from_who'] != mainId_user)
+	       							if (data[i]['reed'] == 0 && data[i]['from_who'] != mainId_user) {
 	       								mainItem_a.classList.add('main_dialog_item_not_reed');
+	       							}
 	       							mainItem_a.href = "messages-" + data[i].id;
 	       							var mainItem = document.querySelectorAll('.main_dialog_item');
 
@@ -109,7 +110,7 @@ window.addEventListener('DOMContentLoaded', function() {
 		    										var dialogs_DATE = document.createElement('div');
 		    										item_dialog_wrapInfo.appendChild(dialogs_DATE);
 		    										dialogs_DATE.classList.add('dialogs_DATE');
-		    										dialogs_DATE.textContent = beauty_date(data[i].Date);
+		    										dialogs_DATE.textContent = beauty_date(data[i]['Date']);
 		    										
 
 		    									var item_dialog_infoMesHow = document.createElement('div');
@@ -149,6 +150,9 @@ window.addEventListener('DOMContentLoaded', function() {
 		      	});
         }
     });
+
+	
+
 
 		function beauty_date(date) {
 
@@ -193,4 +197,134 @@ window.addEventListener('DOMContentLoaded', function() {
 				}
 		}
 
+
+
+
+		function updater(array) {
+			var mainItem_a = document.createElement('a');
+	       	document.getElementById('for_updater').appendChild(mainItem_a);
+	       	mainItem_a.classList.add('main_dialog_item');
+	       	mainItem_a.classList.add('main_dialog_item_not_reed');
+	       	mainItem_a.href = "messages-" + array['id'];
+
+	       	var item_blog_wrap = document.createElement('div');
+			mainItem_a.appendChild(item_blog_wrap);
+			item_blog_wrap.classList.add('div_item_dialog');
+
+				var item_dialog_fotoUser = document.createElement('div');
+				item_blog_wrap.appendChild(item_dialog_fotoUser);
+				item_dialog_fotoUser.classList.add('item_dialog_fotoUser');
+
+					var item_dialog_FOTO = document.createElement('div');
+					item_dialog_fotoUser.appendChild(item_dialog_FOTO);
+					item_dialog_FOTO.classList.add('item_dialog_FOTO');
+
+				var item_dialog_info = document.createElement('div');
+				item_blog_wrap.appendChild(item_dialog_info);
+				item_dialog_info.classList.add('item_dialog_info');
+
+					var item_dialog_wrapInfo = document.createElement('div');
+					item_dialog_info.appendChild(item_dialog_wrapInfo);
+					item_dialog_wrapInfo.classList.add('item_dialog_wrapInfo');
+
+						var dialogs_NAME = document.createElement('div');
+						item_dialog_wrapInfo.appendChild(dialogs_NAME);
+						dialogs_NAME.classList.add('dialogs_NAME');
+
+						$.ajax({
+							type: 'POST',
+							url: 'phpScripts/ajaxLoad/returnUser.php',
+							async: false, 
+							data: { 
+				            		id:    array['from_who'],
+				            		word:  "дай юзера" 
+				            	},
+							success: function (user_info) {
+								user_info = JSON.parse(user_info)[0];
+								dialogs_NAME.innerHTML = user_info['name'] + " " + user_info['lastname'];
+								dialogs_NAME.innerHTML += "<i class=\"material-icons-outlined\">fiber_new</i>";
+								if (user_info['url_avatar'] == null) {
+									item_dialog_FOTO.style.backgroundImage = "url(" + imgStock + ")";
+								} else {
+									item_dialog_FOTO.style.backgroundImage = "url(" + "avatarsUsers/" + user_info['url_avatar'] + ")";
+								}
+							}
+						});
+
+
+						var dialogs_DATE = document.createElement('div');
+						item_dialog_wrapInfo.appendChild(dialogs_DATE);
+						dialogs_DATE.classList.add('dialogs_DATE');
+						dialogs_DATE.textContent = beauty_date(array['Date']);
+						
+
+					var item_dialog_infoMesHow = document.createElement('div');
+					item_dialog_info.appendChild(item_dialog_infoMesHow);
+					item_dialog_infoMesHow.classList.add('item_dialog_infoMesHow');
+
+						var dialogs_MESSAGE = document.createElement('div');
+						item_dialog_infoMesHow.appendChild(dialogs_MESSAGE);
+						dialogs_MESSAGE.classList.add('dialogs_MESSAGE');
+
+							var dialogs_MESSAGE_text = document.createElement('div');
+							dialogs_MESSAGE.appendChild(dialogs_MESSAGE_text);
+							dialogs_MESSAGE_text.classList.add('dialogs_MESSAGE_text');
+							dialogs_MESSAGE_text.innerHTML = array['last_message'];
+
+							var item_dialog_NOREED = document.createElement('div');
+							item_dialog_infoMesHow.appendChild(item_dialog_NOREED);
+							item_dialog_NOREED.classList.add('item_dialog_NOREED');
+							item_dialog_NOREED.innerHTML = "<span>" + array['how_many_reed'] + "</span>";
+		}
+
+
+	setInterval(function() {	
+		$.ajax({
+        	url: 'phpScripts/ajaxLoad/new_dialogs.php',
+        	method: 'POST',
+        	data: {
+        			id:   mainId_user,
+                	word: "диалоги" 
+               	}
+	    }).done(function(data){
+	    	if (data != 0) {				
+	    		data = jQuery.parseJSON(data);
+
+	    		var all_items = document.querySelectorAll('.main_dialog_item');
+
+	    		for (var i = 0; i < data.length; i++) {
+	    			for (var j = 0; j < all_items.length; j++) {
+	    				if ((all_items[j].href.split('messages-')[1]) == data[i]['id']) {
+	    					all_items[j].outerHTML = "";
+	    					delete all_items[j];
+	    					break ;
+	    				}
+	    			}
+	    			updater(data[i]);
+	    		}
+	    		window.scrollTo(0,0);
+	    	}
+
+	    });
+	}, 6000);
+
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

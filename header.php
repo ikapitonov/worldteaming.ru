@@ -79,10 +79,14 @@ if (empty($_SESSION['auth']) || $_SESSION['auth'] == false) {} else {
                     </li>
 
                     <?php } else  {  
-                      $sqlCountDialogsH = "SELECT id FROM userDialogs WHERE to_who=:to_who AND reed=:reed";
-                      $stmtCountDialogsH = $pdo->prepare($sqlCountDialogsH);
-                      $stmtCountDialogsH->execute([':to_who' => $_SESSION['id'] , ':reed' => 0]);
-                      $itemCountDialogsH = $stmtCountDialogsH->fetchAll(PDO::FETCH_ASSOC);
+                        if (!stripos($_SERVER['REQUEST_URI'], "messages-")) {
+                              $sqlCountDialogsH = "SELECT id FROM userDialogs WHERE to_who=:to_who AND reed=:reed";
+                              $stmtCountDialogsH = $pdo->prepare($sqlCountDialogsH);
+                              $stmtCountDialogsH->execute([':to_who' => $_SESSION['id'] , ':reed' => 0]);
+                              $itemCountDialogsH = $stmtCountDialogsH->fetchAll(PDO::FETCH_ASSOC);
+                        } else {
+                            $itemCountDialogsH = false;
+                        }
                       if ($itemCountDialogsH) {
                         $CountDialogsHeader = count($itemCountDialogsH);
                       } else { $CountDialogsHeader = null; }
@@ -91,7 +95,7 @@ if (empty($_SESSION['auth']) || $_SESSION['auth'] == false) {} else {
                         <a href="content-startups-<?php echo $_SESSION['id']; ?>" class="nH_item_a_word nH_item_a_mr">Мой контект</a>
                     </li>
                     <li class="nH_item_set_Li">
-                        <a href="dialogs-<?php echo $_SESSION['id']; ?>" class="nH_item_a_word nH_item_a_mr">Диалоги<?php if ($itemCountDialogsH) { ?>
+                        <a href="dialogs-<?php echo $_SESSION['id']; ?>" class="nH_item_a_word nH_item_a_mr" id="header_dialogs_btn">Диалоги<?php if ($itemCountDialogsH) { ?>
                         <div class="nH_count_dialogsNR"><?php echo $CountDialogsHeader; ?></div>
                         <?php } else {} ?></a>
                     </li>

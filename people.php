@@ -1,7 +1,4 @@
-<?php include "header.php"; 
-include_once "phpScripts/formatDateWord.php"; ?>
-<script type="text/javascript" src="static/search/startups.js"></script>
-
+<?php include "header.php"; ?>
 
 <?php 
 
@@ -37,7 +34,7 @@ $cg15_0="";$cg15_1="";$cg15_2="";$cg15_3="";$cg15_4="";$cg15_5="";$cg15_6="";$cg
 $cg15_11="";$cg15_12="";$cg15_13="";$cg15_14="";$cg15_15="";
 
           $where = " "."WHERE"." ";
-          $formStart = "formStart=1";
+          $formStart = "(formStart=1 OR formStart=0)";
           $ANDForm = "";
           $arraySql = "";
           $Order = " "."id"." ";
@@ -49,7 +46,7 @@ $cg15_11="";$cg15_12="";$cg15_13="";$cg15_14="";$cg15_15="";
 
 
 
-          if (count($_POST) > 0 && isset($_POST['filters'])) {
+          if (count($_POST) > 0) {
 
               if (empty($_POST['desc'])) {
                 $DESC = " "."DESC";
@@ -59,7 +56,7 @@ $cg15_11="";$cg15_12="";$cg15_13="";$cg15_14="";$cg15_15="";
                   $arrayEx = 1;
               }
 
-              if (empty($_GET['search']) || $_GET['search'] == "undefined") {
+              if (empty($_POST['search']) || $_POST['search'] == "undefined") {
                 $pointSql = null;
               } else {
                   $pointSql = " ". "AND" ." "; 
@@ -101,7 +98,7 @@ $cg15_11="";$cg15_12="";$cg15_13="";$cg15_14="";$cg15_15="";
             }
 
 
-            if ( $_POST['cg'] == false ) {} 
+            if (empty($_POST['cg'])) {} 
               else {
                 $where = " "."WHERE"." ";
                 $ANDForm = "AND";
@@ -123,10 +120,10 @@ $cg15_11="";$cg15_12="";$cg15_13="";$cg15_14="";$cg15_15="";
 
 
 
-          if (empty($_GET['search'])) { $string = null; } 
-          elseif ($_GET['search'] == "undefined") { $string = null; }
+          if (empty($_POST['search'])) { $string = null; } 
+          elseif ($_POST['search'] == "undefined") { $string = null; }
             else {
-              $string = strip_tags($_GET['search']);
+              $string = strip_tags($_POST['search']);
 
               $where = " "."WHERE"." ";
               $ANDForm = "AND";
@@ -140,31 +137,88 @@ OR (CONCAT(name,' ',lastname) LIKE '%" . $string . "%'))";
              
           } 
 
-
-          $sqlHuman = "SELECT users.id,`date`,name,lastname,url_avatar FROM users". " "."$statusJoin" ." ". "$cgJoin". " ".
-                        "$where"." ". "$arrayStatus" ." ". "$arrayChS" ." ". "$arrayGet"." ". "$ANDForm" ." "."$formStart"  ." ".
-                        " "."ORDER BY"."$Order"."$DESC"; 
-          $stmtHuman = $pdo->prepare($sqlHuman); 
-          if ($arrayEx > 0) {
-            if ($statusPr > 0) {
-              $stmtHuman->bindParam(':status' , $statusSql);
+    // count ============================================================
+    $sqlHumanCounter = "SELECT users.id,`date`,name,lastname FROM users". " "."$statusJoin" ." ". "$cgJoin". " ".
+                  "$where"." ". "$arrayStatus" ." ". "$arrayChS" ." ". "$arrayGet"." ". "$ANDForm" ." "."$formStart"  ." ".
+                  " "."ORDER BY"."$Order"."$DESC"; 
+    $stmtHumanCounter = $pdo->prepare($sqlHumanCounter); 
+    if ($arrayEx > 0) {
+      if ($statusPr > 0) {
+        $stmtHumanCounter->bindParam(':status' , $statusSql);
+      }
+      if ($cgPr > 0) {
+        foreach ($_POST['cg'] as $key => &$val){
+          $ArrCateg = explode("_", $key);
+            if ($ArrCateg[1] == 0){
+              $val= $ArrCateg[0];
+            } else {
+              $val = $ArrCateg[0]."_".$ArrCateg[1];
             }
-            if ($cgPr > 0) {
-              foreach ($_POST['cg'] as $key => &$val){
-                $ArrCateg = explode("_", $key);
-                  if ($ArrCateg[1] == 0){
-                    $val= $ArrCateg[0];
-                  } else {
-                    $val = $ArrCateg[0]."_".$ArrCateg[1];
-                  }
-                  $key = ':cg';
+            $key = ':cg';
 
-                  $stmtHuman->bindParam($key, $val);
-              }
+            $stmtHumanCounter->bindParam($key, $val);
+        }
+      }
+    } 
+    $stmtHumanCounter->execute();
+    $itemHumanCounter = $stmtHumanCounter->fetchAll(PDO::FETCH_ASSOC);
+    $itemHumanCount = count($itemHumanCounter);
+    // count ============================================================
+
+    if ($itemHumanCount / 20 <= 1) {
+      $blogI = 1;
+    } else {
+      $blogI = $itemHumanCount / 20;
+      if ((int)$blogI != $blogI) {
+        $blogI = (int)$blogI + 1;
+      }
+    }
+    if (!empty($_GET['page']) && $_GET['page'] > 0) {
+      $pageStr = (int)$_GET['page'];
+    } else {
+      $pageStr = (!empty($_POST['page_num']) ? (int)$_POST['page_num'] : 1);
+    }
+    if ($pageStr > 1) {
+      $itemHumanCountSql = 20 * ($pageStr - 1);
+    } else {
+      $itemHumanCountSql = 0;
+    }
+    if ((20 * ($pageStr - 1)) > $itemHumanCount || $pageStr == "0") { ?>
+      <script type="text/javascript" src="static/search/nav_posts_sub.js"></script>
+    <?php }
+
+
+
+
+
+    $sqlHuman = "SELECT users.id,`date`,name,lastname,url_avatar,online FROM users". " "."$statusJoin" ." ". "$cgJoin". " ".
+                  "$where"." ". "$arrayStatus" ." ". "$arrayChS" ." ". "$arrayGet"." ". "$ANDForm" ." "."$formStart"  ." ".
+                  " "."ORDER BY"."$Order"."$DESC LIMIT $itemHumanCountSql, 20"; 
+    $stmtHuman = $pdo->prepare($sqlHuman); 
+    if ($arrayEx > 0) {
+      if ($statusPr > 0) {
+        $stmtHuman->bindParam(':status' , $statusSql);
+      }
+      if ($cgPr > 0) {
+        foreach ($_POST['cg'] as $key => &$val){
+          $ArrCateg = explode("_", $key);
+            if ($ArrCateg[1] == 0){
+              $val= $ArrCateg[0];
+            } else {
+              $val = $ArrCateg[0]."_".$ArrCateg[1];
             }
-          } 
-          $stmtHuman->execute();
-          $itemHuman = $stmtHuman->fetchAll(PDO::FETCH_ASSOC);   ?>
+            $key = ':cg';
+
+            $stmtHuman->bindParam($key, $val);
+        }
+      }
+    } 
+    $stmtHuman->execute();
+    $itemHuman = $stmtHuman->fetchAll(PDO::FETCH_ASSOC);
+
+
+include_once "phpScripts/online.php";
+?>
 
 
 <title>Поиск пользователей</title>
@@ -173,27 +227,28 @@ OR (CONCAT(name,' ',lastname) LIKE '%" . $string . "%'))";
 <div class="wrap_with_Fo">
 
 
-<div id="startup_wrapper_2divs">
+<form method="POST" id="startup_wrapper_2divs" action="people">
     <div id="startup_wrapper_left">
         <div id="navbar_startups_forum">
             <div id="navbar_startups_wrap_items">
                 <a href="" id="startups_main_UNDERNAME"><h1>Поиск пользователей</h1></a>
             </div>
             <div class="selectAll">
-            	Найдено:<span><?php if ($itemHuman) { echo count($itemHuman); } else {echo 0;}?></span>
+            	Найдено:<span><?php if ($itemHuman) { echo $itemHumanCount; } else {echo 0;}?></span>
             </div>
         </div>
     	<div class="wrapper_search">
     		<div class="search_Icon1">
     			<i class="material-icons">search</i>
     		</div>
-    		<form method="GET" id="formSearchText">
+    		<div id="formSearchText">
     		    <input type="text" autocomplete="off" style="width: 480px;" name="search" class="search_inputMain" placeholder="Поиск по имени и фамилии" maxlength="80" value="<?php echo $string; ?>">
     		    <div class="labelForReset">
     		    	<i class="material-icons">close</i>
     		    </div>
     		    <input type="submit" name="searchSub" class="search_inputBtn" value="Найти!">
-    	    </form>
+            <div style="display: none;" id="for_temp_pushHistory"><?php echo (empty($pageStr) ? "1" : $pageStr); ?></div>
+    	    </div>
     	</div>
         <div class="startup_wrap_padding">
      	       
@@ -218,7 +273,6 @@ OR (CONCAT(name,' ',lastname) LIKE '%" . $string . "%'))";
               } else {
                 $UrlImgPe = "avatarsUsers/itsMe.jpg";
               }   
-              $dateDateSmall = formatDate($itemsHuman1['date'],"Регистрация:");  
             ?> 
             <div class="itemContent_wrapper">
                 <div class="itemContent_wrapper_left">
@@ -242,7 +296,7 @@ OR (CONCAT(name,' ',lastname) LIKE '%" . $string . "%'))";
                         <span><?php echo $itemsSelStaticU['status']; ?></span>
                     </div>
                     <div class="itemContentR_3">
-                        <div class="itemContent_countSt"><?php echo $dateDateSmall; ?></div>                       
+                        <div class="itemContent_countSt"><?php echo str_online($itemsHuman1['online']); ?></div>
                     </div>
                 </div>
             </div>
@@ -251,12 +305,45 @@ OR (CONCAT(name,' ',lastname) LIKE '%" . $string . "%'))";
                     <img src="static/img/notFound.png">
                 </div>
             <?php } ?>
+            <?php if ($blogI > 1) { ?>
+                <link rel="stylesheet" type="text/css" href="static/main/nav_posts.css">
+                <script type="text/javascript" src="static/search/nav_posts.js"></script>
+                <div class="nav_posts_wrapper" style="margin-top: 15px;">
+                <?php if ($pageStr > 1) { ?>
+                    <div id="nav_posts_toStart" class="nav_posts_word"><i class="material-icons">keyboard_backspace</i><span>В начало</span></div>
+                <?php } if ($pageStr > 1) {
+                          if ($pageStr == $blogI) {
+                            $iBlogStart = $blogI - 1;
+                            $iBlogEnd = $blogI;
+                          } else if ($pageStr == 1 || empty($pageStr)) {
+                            $iBlogStart = 1;
+                            $iBlogEnd = 2;
+                          } else {
+                            $iBlogStart = $pageStr - 1;
+                            $iBlogEnd = $pageStr + 1;
+                          }
+                      } else {
+                      $iBlogStart = 1;
+                          if ($blogI >= 3) {
+                            $iBlogEnd = 3;
+                          } else {
+                            $iBlogEnd = $blogI;
+                          }
+                      }
+                  for ($iBlog = $iBlogStart; $iBlog <= $iBlogEnd; $iBlog++) { ?>
+                        <div class="nav_posts_btn" 
+                          id="<?php if ($iBlog == $pageStr || (empty($pageStr) &&  $iBlog == 1)) { echo 'nav_posts_word_check'; } ?>"><?php echo $iBlog; ?></div>
+                <?php } if ($blogI > $pageStr && $blogI > 1) { ?>
+                    <div class="nav_posts_word_end">
+                      <span>В конец</span><i class="material-icons">keyboard_backspace</i>
+                    </div>
+            <?php } echo "</div>"; } ?>
         </div>
     </div>
 
     <div id="startup_wrapper_right">
         <div class="profile_left_header_info">Фильтры поиска</div>
-        <form method="POST" class="formWrapperFilters">
+        <div class="formWrapperFilters">
 		    <div class="startup_menuSetting" style="margin: 0; padding: 0;">
             <div class="filters_wrapper">
                 <h3>Сортировать по:</h3>
@@ -1309,9 +1396,10 @@ OR (CONCAT(name,' ',lastname) LIKE '%" . $string . "%'))";
             <a href="phpScripts/resetAll.php?id=2" id="resetFiltersHref">Очистить</a>
             <?php } else {} ?>
 		    </div>
-        </form>
+        </div>
     </div>
-</div>
+    <input type="hidden" name="page_num" id="page_num_post">
+</form>
 <script type="text/javascript" src="static/search/search.js"></script>
 <script type="text/javascript" src="static/search/peopleCg.js"></script>
 <?php include "footer.php"; ?>

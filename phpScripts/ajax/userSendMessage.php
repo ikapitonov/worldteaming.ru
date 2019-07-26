@@ -34,7 +34,7 @@ if ($_POST['messageWord'] == 'отправить сообщение user.php') {
     $itemSelect = $stmtSelect->fetchAll(PDO::FETCH_ASSOC);
     $itemsSelect = $itemSelect[0];
     if ($itemSelect) {
-    	$sqlUpdate = "UPDATE userDialogs SET last_message=:last_message, from_who =:from_who,
+    	$sqlUpdate = "UPDATE userDialogs SET last_message=:last_message, from_who =:from_who, `date`=NOW(),
                                            to_who=:to_who,
   	                                       reed=:reed, how_many_reed=:how_many_reed 
   	                                       WHERE id=:id";

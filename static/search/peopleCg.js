@@ -39,7 +39,6 @@ var wrap_categories = document.querySelectorAll('.userStart_categoriesMains_wth_
     });
 
 
-
   var item_cg = document.querySelectorAll('.userStart_categoriesMains_wth_btn') || [];
 		  item_cg = [].slice.apply(item_cg);
 		  item_cg.forEach(function (element, i) {

@@ -40,7 +40,7 @@ RewriteRule ^forum_([a-z]+)_([0-9]+)-([0-9]+)-page([0-9]+)$ forum.php?$1=$2&id=$
 
 
 RewriteRule ^404$ 404.php
-ErrorDocument 404 https://worldteaming.ru/404
+#ErrorDocument 404 http://localhost:8888/project/404.php
 
 <IfModule mod_headers.c>
         Header append Cache-Control "no-store, no-cache, must-revalidate"

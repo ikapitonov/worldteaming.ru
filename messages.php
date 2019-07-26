@@ -28,6 +28,15 @@
     ':parent_id' => $getURLid,
     ':to_who_mes' => $userNowHere
     ]);
+
+    $counter_not_red = 0;
+    $sqlCountDialogsM = "SELECT id FROM userDialogs WHERE to_who=:to_who AND reed=:reed";
+    $stmtCountDialogsM = $pdo->prepare($sqlCountDialogsM);
+    $stmtCountDialogsM->execute([':to_who' => $_SESSION['id'] , ':reed' => 0]);
+    $itemCountDialogsM = $stmtCountDialogsM->fetchAll(PDO::FETCH_ASSOC);
+    if ($itemCountDialogsM)
+        $counter_not_red = count($itemCountDialogsM);
+
    ?>
 
 <?php 
@@ -73,10 +82,14 @@
             } else {
                 $UrlImg = "avatarsUsers/itsMe.jpg";
             }
+
+require_once 'phpScripts/dateDayMonth.php';
 ?>
   <title>Сообщения</title>
    <link rel="stylesheet" type="text/css" href="static/messages/messages.css">
    <link rel="stylesheet" type="text/css" href="static/main/execText.css">
+   <div id="counter_dialog_mess" style="display: none;"><?php echo $counter_not_red; ?></div>
+   <script type="text/javascript" src="static/messages/header_counter.js"></script>
    <div id="message_main_wrapper">
        <div id="message_left_side" class="message_left_right_side">
             <div id="message_left_upInfoUP"></div>
@@ -116,9 +129,11 @@
                     <?php } ?>
                     <ul id="Messanger_wrapperITEMS_ul">
                         <?php 
+                            $counter = 0;
+
                         foreach ($itemMessages as  $itemsMessages) {
                             $timeMessages = strtotime($itemsMessages['date']);
-                            $timeMessagesReady = date('h', $timeMessages). ':' .date('i', $timeMessages);
+                            $timeMessagesReady = date('H', $timeMessages). ':' .date('i', $timeMessages);
                             if ($itemsMessages['to_who_mes'] == $_SESSION['id']) {
                                 $MessageSideClass = " " . "Messanger_item_Inherit_left";
                                 $MessageUnderTxt = "<div class='Messanger_item_Date_not_me'>
@@ -145,7 +160,25 @@
                                 <?php echo $MessageUnderTxt; ?>
                             </div>
                         </li>
-                        <?php } ?>
+                            <?php if ( !empty($itemMessages[$counter + 1]) && 
+                            (date("Y-m-d",strtotime($itemMessages[$counter]['date'])) !=  date("Y-m-d",strtotime($itemMessages[$counter + 1]['date']))) ) { ?>
+                            <li class="date_ticker_wrap">
+                                <div class="date_ticker_line"></div>
+                                <div class="date_ticker_item"><?php echo "От " . formatDate($itemsMessages['date']); ?></div>
+                            </li>
+                            <?php } elseif ($itemCounter == $counter + 1) {  ?>
+                                <li class="date_ticker_wrap">
+                                    <div class="date_ticker_line"></div>
+                                    <div class="date_ticker_item"><?php echo "От " . formatDate($itemsMessages['date']); ?></div>
+                                </li>  
+                        <?php } elseif ($itemCounter >= 50 && (($counter + 1) == 50)) { ?>
+                                <li class="date_ticker_wrap" style="display: none;">
+                                    <div class="date_ticker_line"></div>
+                                    <div class="date_ticker_item"><?php echo "От " . formatDate($itemsMessages['date']); ?></div>
+                                </li> 
+                        <?php }
+                                $counter++;  
+                            } ?>
                    </ul>
                    <ul id="Messanger_creater_wrap"></ul>
                 </div>
@@ -166,6 +199,7 @@
        </div>
    </div>
    <div id="for_scroll_ajax" style="display: none;"><?php echo $itemCounter; ?></div>
+   <div id="print_last_date" style="display: none;"><?php echo $itemMessages[$counter - 1]['date']; ?></div>
    <script type="text/javascript" src="static/messages/messages.js"></script>
    <script type="text/javascript" src="static/main/autosize.js"></script>
         <script type="text/javascript">
@@ -173,6 +207,9 @@
         </script>
 </body>
 </html>
+<link rel="stylesheet" type="text/css" href="static/main/newMess.css">
+<script type="text/javascript" src="static/main/newMess.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="static/messages/messages_update.js"></script>
 <input type="hidden" name="" value="11">
 <?php } } } } ?>

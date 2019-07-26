@@ -1,261 +1,311 @@
 <?php include "header.php"; 
 include_once "phpScripts/formatDateWord.php"; ?>
-<script type="text/javascript" src="static/search/startups.js"></script>
 
 
 <?php 
-
             
-            $sqlCountStart = "SELECT verify FROM startup_verify_users 
-                              WHERE user_id=:user_id AND verify=:verify AND creater=:creater";
-            $stmtCountStart = $pdo->prepare($sqlCountStart);
-            $stmtCountStart->execute([':user_id' => $_SESSION['id'], ':verify' => 3, ':creater' => 1 ]);
-            $itemCountStart = $stmtCountStart->fetchAll(PDO::FETCH_ASSOC); 
+    $sqlCountStart = "SELECT verify FROM startup_verify_users 
+                      WHERE user_id=:user_id AND verify=:verify AND creater=:creater";
+    $stmtCountStart = $pdo->prepare($sqlCountStart);
+    $stmtCountStart->execute([':user_id' => $_SESSION['id'], ':verify' => 3, ':creater' => 1 ]);
+    $itemCountStart = $stmtCountStart->fetchAll(PDO::FETCH_ASSOC); 
 
-            if ($itemCountStart) {
-              $CountStart = count($itemCountStart);
-            } else {
-                $CountStart = 0;
-            }
-            if (empty($_SESSION['auth']) || $_SESSION['auth'] == false) {
-                $startupHref = "signup";
-            } else {
-                $startupHref = "createStartup";
-            }
+    if ($itemCountStart) {
+      $CountStart = count($itemCountStart);
+    } else {
+        $CountStart = 0;
+    }
+    if (empty($_SESSION['auth']) || $_SESSION['auth'] == false) {
+        $startupHref = "signup";
+    } else {
+        $startupHref = "createStartup";
+    }
 
 
 
+  
+  	$where = "";
+  	$arraySql = ""; $arrayGet = "";
+  	$arrayEx = null; $statusPr = null; $categPr = null; $areaPr = null; $stringPr = null;
+  	$Order = " ". "id" ." "; $DESC = " "."DESC"; $Order_check1 = " "."checked"; $Order_check2 = ""; $DESC_check = "";
+
+  	$ST1=""; $ST2=""; $ST3=""; $ST4="";
+  	$CGst1=""; $CGst2=""; $CGst3=""; $CGst4="";
+  	$areaS1="";$areaS2="";$areaS3="";$areaS4="";$areaS5="";$areaS6="";$areaS7="";$areaS8="";$areaS9="";$areaS10="";
+    $areaS11="";$areaS12="";$areaS13="";$areaS14="";$areaS15="";$areaS16="";$areaS17="";$areaS18="";$areaS19="";$areaS20="";
+    $areaS21="";$areaS22="";$areaS23="";$areaS24="";$areaS25="";$areaS26="";
+    
+
+
+  if (count($_POST) > 0) {
+
+  	if (empty($_POST['orderBy'])) {
+  	} else {
+  		  if ($_POST['orderBy'] == "orderBy1") {
+          $Order = " ". "id" ." ";
+          $Order_check1 = " "."checked";
+          $Order_check2 = "";
+        } elseif ($_POST['orderBy'] == "orderBy2"){
+    			  $Order = " ". "views" ." ";
+    			  $Order_check2 = " "."checked";
+    			  $Order_check1 = "";
+  	    }
+  	}
+  		if (empty($_POST['desc'])) {
+  			$DESC = " "."DESC";
+  		} else {
+  			  $DESC = null;
+  			  $DESC_check = " "."checked";
+  		}
+
+    if (empty($_POST['search']) || $_POST['search'] == "undefined") {
+    	$pointSql = null;
+    } else {
+    	  $pointSql = " ". "AND" ." "; 
+    }
+
+  	if ( $_POST['status'] == "not_found_0" || $_POST['status'] == "not_found_S0") {}
+  	  else {
+        $where = " "."WHERE"." ";
+        $arrayEx = 1;
+        $statusPr = 1;
+
+        if ($_POST['status'] == "status_1") {
+		      $statusSql = "Новый проект";
+		      $ST1 = " "."selected";
+		    } if ($_POST['status'] == "status_2") {
+		        $statusSql = "Развивающийся проект";
+		        $ST2 = " "."selected";
+		      } if ($_POST['status'] == "status_3") {
+		          $statusSql = "Действующий стартап";
+		          $ST3 = " "."selected";
+		        } if ($_POST['status'] == "status_4") {
+		            $statusSql = "Компания";
+		            $ST4 = " "."selected";
+		          }
+
+        $arraySql = "status=:status".$pointSql;
+  	}
+  	if ( $_POST['Main_categ'] == "not_found_1" || $_POST['Main_categ'] == "not_found_C1") {}
+  		else {
+  			$where = " "."WHERE"." ";
+  			$arrayEx = 1;
+  			$categPr = 1;
+
+  			  if ($_POST['Main_categ'] == "categ_1") {
+					  $categSql = "Производство";
+					  $CGst1 = " "."selected";
+					} if ($_POST['Main_categ'] == "categ_2") {
+					    $categSql = "Торговля";
+					    $CGst2 = " "."selected";
+					  } if ($_POST['Main_categ'] == "categ_3") {
+					      $categSql = "Финансы/страхование";
+					      $CGst3 = " "."selected";
+					    } if ($_POST['Main_categ'] == "categ_4") {
+					        $categSql = "Агенство";
+					        $CGst4 = " "."selected";
+					      }
           
-          	$where = "";
-          	$arraySql = ""; $arrayGet = "";
-          	$arrayEx = null; $statusPr = null; $categPr = null; $areaPr = null; $stringPr = null;
-          	$Order = " ". "id" ." "; $DESC = " "."DESC"; $Order_check1 = " "."checked"; $Order_check2 = ""; $DESC_check = "";
-
-          	$ST1=""; $ST2=""; $ST3=""; $ST4="";
-          	$CGst1=""; $CGst2=""; $CGst3=""; $CGst4="";
-          	$areaS1="";$areaS2="";$areaS3="";$areaS4="";$areaS5="";$areaS6="";$areaS7="";$areaS8="";$areaS9="";$areaS10="";
-            $areaS11="";$areaS12="";$areaS13="";$areaS14="";$areaS15="";$areaS16="";$areaS17="";$areaS18="";$areaS19="";$areaS20="";
-            $areaS21="";$areaS22="";$areaS23="";$areaS24="";$areaS25="";$areaS26="";
-            
-
-
-          if (count($_POST) > 0 && isset($_POST['filters'])) {
-
-          	if (empty($_POST['orderBy'])) {
-          	} else {
-          		  if ($_POST['orderBy'] == "orderBy1") {
-                  $Order = " ". "id" ." ";
-                  $Order_check1 = " "."checked";
-                  $Order_check2 = "";
-                } elseif ($_POST['orderBy'] == "orderBy2"){
-		        			  $Order = " ". "views" ." ";
-		        			  $Order_check2 = " "."checked";
-		        			  $Order_check1 = "";
-          	    }
-          	}
-          		if (empty($_POST['desc'])) {
-          			$DESC = " "."DESC";
-          		} else {
-          			  $DESC = null;
-          			  $DESC_check = " "."checked";
-          		}
-
-            if (empty($_GET['search']) || $_GET['search'] == "undefined") {
-            	$pointSql = null;
-            } else {
-            	  $pointSql = " ". "AND" ." "; 
-            }
-
-          	if ( $_POST['status'] == "not_found_0" || $_POST['status'] == "not_found_S0") {}
-          	  else {
-                $where = " "."WHERE"." ";
-                $arrayEx = 1;
-                $statusPr = 1;
-
-                if ($_POST['status'] == "status_1") {
-						      $statusSql = "Новый проект";
-						      $ST1 = " "."selected";
-						    } if ($_POST['status'] == "status_2") {
-						        $statusSql = "Развивающийся проект";
-						        $ST2 = " "."selected";
-						      } if ($_POST['status'] == "status_3") {
-						          $statusSql = "Действующий стартап";
-						          $ST3 = " "."selected";
-						        } if ($_POST['status'] == "status_4") {
-						            $statusSql = "Компания";
-						            $ST4 = " "."selected";
-						          }
-
-                $arraySql = "status=:status".$pointSql;
-          	}
-          	if ( $_POST['Main_categ'] == "not_found_1" || $_POST['Main_categ'] == "not_found_C1") {}
-          		else {
-          			$where = " "."WHERE"." ";
-          			$arrayEx = 1;
-          			$categPr = 1;
-
-          			  if ($_POST['Main_categ'] == "categ_1") {
-									  $categSql = "Производство";
-									  $CGst1 = " "."selected";
-									} if ($_POST['Main_categ'] == "categ_2") {
-									    $categSql = "Торговля";
-									    $CGst2 = " "."selected";
-									  } if ($_POST['Main_categ'] == "categ_3") {
-									      $categSql = "Финансы/страхование";
-									      $CGst3 = " "."selected";
-									    } if ($_POST['Main_categ'] == "categ_4") {
-									        $categSql = "Агенство";
-									        $CGst4 = " "."selected";
-									      }
-                  
-                  if ($statusPr > 0) {
-                  	$arraySql =  "status=:status AND type=:type".$pointSql;
-                  }	else {
-                  	  $arraySql =  "type=:type".$pointSql;
-                  }
-									     
-          	}
-          	if ( $_POST['area_st'] == "not_found_2" || $_POST['area_st'] == "not_found_A2") {}
-          		else {
-          			$where = " "."WHERE"." ";
-          			$arrayEx = 1;
-          			$areaPr = 1;
-
-
-          			if ($_POST['area_st'] == "area_1") {
-							    $areaSql = "Автомобильный бизнес";
-							    $areaS1 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_2") {
-							    $areaSql = "Гостиницы, рестораны";
-							    $areaS2 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_3") {
-							    $areaSql = "Государственная деятельность";
-							    $areaS3 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_4") {
-							    $areaSql = "Дизайн, проектирование";
-							    $areaS4 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_5") {
-							    $areaSql = "Добывающая отрасль";
-							    $areaS5 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_6") {
-							    $areaSql = "Исскуство, культура";
-							    $areaS6 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_7") {
-							    $areaSql = "ИТ, интернет";
-							    $areaS7 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_8") {
-							    $areaSql = "Кино, СМИ,Продюсирование";
-							    $areaS8 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_9") {
-							    $areaSql = "Лесная промышленность";
-							    $areaS9 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_10") {
-							    $areaSql = "Маркетинг, реклама, PR";
-							    $areaS10 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_11") {
-							    $areaSql = "Медицина";
-							    $areaS11 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_12") {
-							    $areaSql = "Недвижимость, аренда";
-							    $areaS12 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_13") {
-							    $areaSql = "Оптовая торговля";
-							    $areaS13 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_14") {
-							    $areaSql = "Образование";
-							    $areaS14 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_15") {
-							    $areaSql = "Перевозки, логистика";
-							    $areaS15 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_16") {
-							    $areaSql = "Продукты питания";
-							    $areaS16 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_17") {
-							    $areaSql = "Розничная торговля";
-							    $areaS17 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_18") {
-							    $areaSql = "Сельское хозяйство";
-							    $areaS18 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_19") {
-							    $areaSql = "Строительство, проектирование";
-							    $areaS19 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_20") {
-							    $areaSql = "Товары потребления (непищевые)";
-							    $areaS20 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_21") {
-							    $areaSql = "Услуги для бизнеса, B2B";
-							    $areaS21 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_22") {
-							    $areaSql = "Услуги для населения";
-							    $areaS22 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_23") {
-							    $areaSql = "Финансовый сектор";
-							    $areaS23 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_24") {
-							    $areaSql = "Химическое производство";
-							    $areaS24 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_25") {
-							    $areaSql = "Электроника, техника";
-							    $areaS25 = " "."selected";
-							  } elseif ($_POST['area_st'] == "area_26") {
-							    $areaSql = "Энергетика";
-							    $areaS26 = " "."selected";
-							  }
-
-							  if ($statusPr > 0 && $categPr == null) {
-                	$arraySql =  "status=:status AND area=:area".$pointSql;
-                }	elseif ($statusPr == null && $categPr >0) {
-                	  $arraySql =  "type=:type AND area=:area".$pointSql;
-                } elseif ($statusPr > 0 && $categPr > 0) {
-                	  $arraySql = "status=:status AND type=:type AND area=:area".$pointSql;
-                }
-                  elseif ($statusPr == null && $categPr == null) {
-                	  $arraySql = "area=:area".$pointSql;
-                }
-          	}
+          if ($statusPr > 0) {
+          	$arraySql =  "status=:status AND type=:type".$pointSql;
+          }	else {
+          	  $arraySql =  "type=:type".$pointSql;
           }
+					     
+  	}
+  	if ( $_POST['area_st'] == "not_found_2" || $_POST['area_st'] == "not_found_A2") {}
+  		else {
+  			$where = " "."WHERE"." ";
+  			$arrayEx = 1;
+  			$areaPr = 1;
 
 
-        
+  			if ($_POST['area_st'] == "area_1") {
+			    $areaSql = "Автомобильный бизнес";
+			    $areaS1 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_2") {
+			    $areaSql = "Гостиницы, рестораны";
+			    $areaS2 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_3") {
+			    $areaSql = "Государственная деятельность";
+			    $areaS3 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_4") {
+			    $areaSql = "Дизайн, проектирование";
+			    $areaS4 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_5") {
+			    $areaSql = "Добывающая отрасль";
+			    $areaS5 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_6") {
+			    $areaSql = "Исскуство, культура";
+			    $areaS6 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_7") {
+			    $areaSql = "ИТ, интернет";
+			    $areaS7 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_8") {
+			    $areaSql = "Кино, СМИ,Продюсирование";
+			    $areaS8 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_9") {
+			    $areaSql = "Лесная промышленность";
+			    $areaS9 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_10") {
+			    $areaSql = "Маркетинг, реклама, PR";
+			    $areaS10 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_11") {
+			    $areaSql = "Медицина";
+			    $areaS11 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_12") {
+			    $areaSql = "Недвижимость, аренда";
+			    $areaS12 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_13") {
+			    $areaSql = "Оптовая торговля";
+			    $areaS13 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_14") {
+			    $areaSql = "Образование";
+			    $areaS14 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_15") {
+			    $areaSql = "Перевозки, логистика";
+			    $areaS15 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_16") {
+			    $areaSql = "Продукты питания";
+			    $areaS16 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_17") {
+			    $areaSql = "Розничная торговля";
+			    $areaS17 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_18") {
+			    $areaSql = "Сельское хозяйство";
+			    $areaS18 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_19") {
+			    $areaSql = "Строительство, проектирование";
+			    $areaS19 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_20") {
+			    $areaSql = "Товары потребления (непищевые)";
+			    $areaS20 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_21") {
+			    $areaSql = "Услуги для бизнеса, B2B";
+			    $areaS21 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_22") {
+			    $areaSql = "Услуги для населения";
+			    $areaS22 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_23") {
+			    $areaSql = "Финансовый сектор";
+			    $areaS23 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_24") {
+			    $areaSql = "Химическое производство";
+			    $areaS24 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_25") {
+			    $areaSql = "Электроника, техника";
+			    $areaS25 = " "."selected";
+			  } elseif ($_POST['area_st'] == "area_26") {
+			    $areaSql = "Энергетика";
+			    $areaS26 = " "."selected";
+			  }
+
+			  if ($statusPr > 0 && $categPr == null) {
+        	$arraySql =  "status=:status AND area=:area".$pointSql;
+        }	elseif ($statusPr == null && $categPr >0) {
+        	  $arraySql =  "type=:type AND area=:area".$pointSql;
+        } elseif ($statusPr > 0 && $categPr > 0) {
+        	  $arraySql = "status=:status AND type=:type AND area=:area".$pointSql;
+        }
+          elseif ($statusPr == null && $categPr == null) {
+        	  $arraySql = "area=:area".$pointSql;
+        }
+  	}
+  }
 
 
 
 
 
-          if (empty($_GET['search'])) { $string = null; } 
-          elseif ($_GET['search'] == "undefined") { $string = null; }
-          	else {
-          	  $string = strip_tags($_GET['search']);
-
-          	  $where = " "."WHERE"." ";
-          		$arrayEx = 1;
-          		$stringPr = 1;
-
-              $arrayGet = "name LIKE :name";
-          }
-          
 
 
-          $sqlStartup = "SELECT id,date_born,name,status,type,area,views,avatar_src FROM startups $where"."$arraySql"."$arrayGet".
-                        " "."ORDER BY"."$Order"."$DESC";
-          $stmtStartup = $pdo->prepare($sqlStartup); 
-          if ($arrayEx > 0) {
-            
-          	if ($statusPr > 0) {
-              $stmtStartup->bindParam(':status' , $statusSql);           
-          	} 
-          	if ($categPr > 0) {
-          		$stmtStartup->bindParam(':type' , $categSql);
-          	}
-          	if ($areaPr > 0) {
-          		$stmtStartup->bindParam(':area' , $areaSql);
-          	}
-          	if ($stringPr > 0) {
-          		$stmtStartup->bindValue(':name',"%". $string ."%");
-          	}
-          } 
-          $stmtStartup->execute();
-          $itemStartup = $stmtStartup->fetchAll(PDO::FETCH_ASSOC);   ?>
+
+  if (empty($_POST['search'])) { $string = null; } 
+  elseif ($_POST['search'] == "undefined") { $string = null; }
+  	else {
+  	  $string = strip_tags($_POST['search']);
+
+  	  $where = " "."WHERE"." ";
+  		$arrayEx = 1;
+  		$stringPr = 1;
+
+      $arrayGet = "name LIKE :name";
+  }
+  
+
+  // count ============================================================
+  $sqlStartupCount = "SELECT id,date_born,name,status,type,area,views,avatar_src FROM startups $where"."$arraySql"."$arrayGet".
+                " "."ORDER BY"."$Order"."$DESC";
+  $stmtStartupCount = $pdo->prepare($sqlStartupCount); 
+  if ($arrayEx > 0) {
+    
+    if ($statusPr > 0) {
+      $stmtStartupCount->bindParam(':status' , $statusSql);           
+    } 
+    if ($categPr > 0) {
+      $stmtStartupCount->bindParam(':type' , $categSql);
+    }
+    if ($areaPr > 0) {
+      $stmtStartupCount->bindParam(':area' , $areaSql);
+    }
+    if ($stringPr > 0) {
+      $stmtStartupCount->bindValue(':name',"%". $string ."%");
+    }
+  } 
+  $stmtStartupCount->execute();
+  $itemStartupCount = $stmtStartupCount->fetchAll(PDO::FETCH_ASSOC);
+  $itemHumanCount = count($itemStartupCount);
+  // count ============================================================
+
+
+
+    if ($itemHumanCount / 20 <= 1) {
+      $blogI = 1;
+    } else {
+      $blogI = $itemHumanCount / 20;
+      if ((int)$blogI != $blogI) {
+        $blogI = (int)$blogI + 1;
+      }
+    }
+    if (!empty($_GET['page']) && $_GET['page'] > 0) {
+      $pageStr = (int)$_GET['page'];
+    } else {
+      $pageStr = (!empty($_POST['page_num']) ? (int)$_POST['page_num'] : 1);
+    }
+    if ($pageStr > 1) {
+      $itemHumanCountSql = 20 * ($pageStr - 1);
+    } else {
+      $itemHumanCountSql = 0;
+    }
+    if ((20 * ($pageStr - 1)) > $itemHumanCount || $pageStr == "0") { ?>
+      <script type="text/javascript" src="static/search/nav_posts_sub.js"></script>
+    <?php }
+
+
+
+  $sqlStartup = "SELECT id,date_born,name,status,type,area,views,avatar_src FROM startups $where"."$arraySql"."$arrayGet".
+                " "."ORDER BY"."$Order"."$DESC LIMIT $itemHumanCountSql, 20";
+  $stmtStartup = $pdo->prepare($sqlStartup); 
+  if ($arrayEx > 0) {
+    
+  	if ($statusPr > 0) {
+      $stmtStartup->bindParam(':status' , $statusSql);           
+  	} 
+  	if ($categPr > 0) {
+  		$stmtStartup->bindParam(':type' , $categSql);
+  	}
+  	if ($areaPr > 0) {
+  		$stmtStartup->bindParam(':area' , $areaSql);
+  	}
+  	if ($stringPr > 0) {
+  		$stmtStartup->bindValue(':name',"%". $string ."%");
+  	}
+  } 
+  $stmtStartup->execute();
+  $itemStartup = $stmtStartup->fetchAll(PDO::FETCH_ASSOC);
+
+
+?>
 
 
 <title>Поиск стартапов</title>
@@ -264,15 +314,14 @@ include_once "phpScripts/formatDateWord.php"; ?>
 <link rel="stylesheet" type="text/css" href="static/search/startups.css">
 <div class="wrap_with_Fo">
 
-
-<div id="startup_wrapper_2divs">
+<form method="POST" id="startup_wrapper_2divs" action="startups">
     <div id="startup_wrapper_left">
         <div id="navbar_startups_forum">
             <div id="navbar_startups_wrap_items">
                 <a href="" id="startups_main_UNDERNAME"><h1>Поиск стартапов</h1></a>
             </div>
             <div class="selectAll">
-            	Найдено:<span><?php if ($itemStartup) { echo count($itemStartup); } else {echo 0;}?></span>
+            	Найдено:<span><?php if ($itemStartup) { echo $itemHumanCount; } else {echo 0;}?></span>
             </div>
                <?php if ($CountStart < 6) { ?>
                 <a href="<?php echo $startupHref; ?>" id="createStartup_wrap">Создать стартап</a>
@@ -282,13 +331,14 @@ include_once "phpScripts/formatDateWord.php"; ?>
     		<div class="search_Icon1">
     			<i class="material-icons">search</i>
     		</div>
-    		<form method="GET" id="formSearchText">
+    		<div id="formSearchText">
     		    <input type="text" autocomplete="off" style="width: 580px;" name="search" class="search_inputMain" placeholder="Поиск по названию" maxlength="80" value="<?php echo $string; ?>">
     		    <div class="labelForReset">
     		    	<i class="material-icons">close</i>
     		    </div>
     		    <input type="submit" name="searchSub" class="search_inputBtn" value="Найти!">
-    	    </form>
+            <div style="display: none;" id="for_temp_pushHistory"><?php echo (empty($pageStr) ? "1" : $pageStr); ?></div>
+    	    </div>
     	</div>
         <div class="startup_wrap_padding">
      	       
@@ -340,6 +390,39 @@ include_once "phpScripts/formatDateWord.php"; ?>
                     <img src="static/img/notFound.png">
                 </div>
             <?php } ?>
+            <?php if ($blogI > 1) { ?>
+                <link rel="stylesheet" type="text/css" href="static/main/nav_posts.css">
+                <script type="text/javascript" src="static/search/nav_posts.js"></script>
+                <div class="nav_posts_wrapper" style="margin-top: 15px;">
+                <?php if ($pageStr > 1) { ?>
+                    <div id="nav_posts_toStart" class="nav_posts_word"><i class="material-icons">keyboard_backspace</i><span>В начало</span></div>
+                <?php } if ($pageStr > 1) {
+                          if ($pageStr == $blogI) {
+                            $iBlogStart = $blogI - 1;
+                            $iBlogEnd = $blogI;
+                          } else if ($pageStr == 1 || empty($pageStr)) {
+                            $iBlogStart = 1;
+                            $iBlogEnd = 2;
+                          } else {
+                            $iBlogStart = $pageStr - 1;
+                            $iBlogEnd = $pageStr + 1;
+                          }
+                      } else {
+                      $iBlogStart = 1;
+                          if ($blogI >= 3) {
+                            $iBlogEnd = 3;
+                          } else {
+                            $iBlogEnd = $blogI;
+                          }
+                      }
+                  for ($iBlog = $iBlogStart; $iBlog <= $iBlogEnd; $iBlog++) { ?>
+                        <div class="nav_posts_btn" 
+                          id="<?php if ($iBlog == $pageStr || (empty($pageStr) &&  $iBlog == 1)) { echo 'nav_posts_word_check'; } ?>"><?php echo $iBlog; ?></div>
+                <?php } if ($blogI > $pageStr && $blogI > 1) { ?>
+                    <div class="nav_posts_word_end">
+                      <span>В конец</span><i class="material-icons">keyboard_backspace</i>
+                    </div>
+            <?php } echo "</div>"; } ?>
         </div>
     </div>
 
@@ -349,7 +432,7 @@ include_once "phpScripts/formatDateWord.php"; ?>
 
     <div id="startup_wrapper_right">
         <div class="profile_left_header_info">Фильтры поиска</div>
-        <form method="POST" class="formWrapperFilters">
+        <div class="formWrapperFilters">
 		    <div class="startup_menuSetting" style="margin: 0; padding: 0;">
 		    	<div class="filters_wrapper">
 		        	<h3>Сортировать по:</h3>
@@ -436,9 +519,10 @@ include_once "phpScripts/formatDateWord.php"; ?>
 		        <a href="phpScripts/resetAll.php?id=1" id="resetFiltersHrefS">Очистить</a>
 		        <?php } else {} ?>
 		    </div>
-        </form>
+        </div>
     </div>
-</div>
+    <input type="hidden" name="page_num" id="page_num_post">
+</form>
 <script type="text/javascript" src="static/search/search.js"></script>
 
 

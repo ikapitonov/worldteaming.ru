@@ -2,14 +2,12 @@
 <?php
 $getURLid = $_GET['id']; 
 
-error_reporting(0); 
-
-
+error_reporting(0);
 
 if ($getURLid == 0 ) {
   echo '<script type="text/javascript">location="index.php"</script>';
 } else {
-$sqlGet = "SELECT id ,name, lastname, email, url_avatar, formStart FROM users WHERE id = :id";
+$sqlGet = "SELECT id ,name, lastname, email, url_avatar, formStart, online FROM users WHERE id = :id";
 $stmtObj = $pdo->prepare($sqlGet);
 $stmtObj->execute([':id' => $getURLid]);
 $item = $stmtObj->fetchAll(PDO::FETCH_ASSOC); 
@@ -25,11 +23,11 @@ if ( $_SESSION['id'] && $_SESSION['email'] ) {
         $wratUser = 'me';
     } else {
         $wratUser = 'notMe';
-        include "static/profile/popupMessage.php"; 
     }
 } else {
     $trueUser = 'no';
 }
+
 
 if ($item && $itemTake['formStart'] == 1) { ?>
 
@@ -98,6 +96,9 @@ if ($item && $itemTake['formStart'] == 1) { ?>
     $itemJoinCg = $stmtJoinCg->fetchAll(PDO::FETCH_ASSOC);
 
     include_once "phpScripts/formatDate.php";
+    include_once "phpScripts/online.php";
+
+    $online_user = str_online($itemTake['online']);
 
 
 
@@ -169,9 +170,18 @@ if(isset($_FILES['file'])) {
                 <div id="navbar_startups_wrap_items">
                     <a href="" id="startups_main_UNDERNAME"><h1 class="item_h1_main"><?php echo $itemTake['name'] . " " .$itemTake['lastname']; ?></h1></a>
                 </div>
-                <div class="selectAll"><?php echo $itemsStaticInfo['status']; ?></div>
+                <div class="selectAll"><?php echo $online_user; ?></div>
             </div>
             <div class="profile_left_info_wrap">
+               <div class="profile_i_want_wrap">
+                  <div class="for_task_print_wrapper">
+                      <div class="cg_MAIN_print">Статус</div>
+                      <i class="material-icons tranform_icon_profile">keyboard_backspace</i>
+                      <div class="cg_small_WRAPPER_DIV">
+                          <div class="cg_smallITEM"><?php echo $itemsStaticInfo['status']; ?></div>
+                      </div>
+                  </div>
+               </div>
                 <div class="profile_i_want_wrap">
                     <div class="setting_groupWrap"><h2>Желаeмые сферы деятельности:</h2></div>
                       <?php if ($itemJoinCg) { ?>  <div class="for_task_print_wrapper">
@@ -263,6 +273,7 @@ if(isset($_FILES['file'])) {
                 </div>
                 <?php  } else {} ?>
             </div>
+            <div class="profile_left_header_info">Портфолио</div>
         </div>
         <div id="profile_right_side">
             <div id="profile_right_img_wrap">
@@ -455,6 +466,10 @@ if(isset($_FILES['file'])) {
             </div>
         </div>
     </div>
+<?php if ($wratUser == 'notMe') {
+        include "static/profile/popupMessage.php";
+          }  ?>
+
 <?php include "footer.php"; ?>
 <?php } else { ?>
     <style type="text/css">       
@@ -476,7 +491,6 @@ if(isset($_FILES['file'])) {
     </body>
     </html>
 <?php } } ?>
-
 
 
 

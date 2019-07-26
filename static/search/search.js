@@ -60,4 +60,12 @@ function closeAllSelect(elmnt) {
   }
 }
 
+  var value_null, input_search;
+    value_null   = document.querySelector('#formSearchText .labelForReset');
+    input_search = document.querySelector('#formSearchText .search_inputMain');
+
+    value_null.onclick = function () {
+      input_search.value = null;
+    }
+
 });

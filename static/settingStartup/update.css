@@ -194,7 +194,6 @@ hr {
 	border: 1px solid #D3D9DE;
 	height: 100px;
 	max-height: 300px;
-	word-break: break-all;
 	word-wrap: break-word;
 }
 .userStart_for_comment  {

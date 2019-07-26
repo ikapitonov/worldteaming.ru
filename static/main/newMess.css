@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+.new_mess_wrapper {
+	width: 340px;
+	height: auto;
+	position: fixed;
+	bottom: 20px;
+	left: 20px;
+	z-index: 101;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	background-color: white;
+	padding-bottom: 15px;
+	display: block;
+	text-decoration: none;
+	overflow: hidden;
+	cursor: pointer;
+	transition: 0.15s ease;
+}
+.new_mess_wrapper.new_mess_wrapper_no {
+	transition: 1s ease;
+	opacity: 0;
+}
+.new_mess_wrapper:hover {
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.new_mess_wrapper .new_mess_h1 {
+	width: all;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 40px;
+	font-size: 16px;
+	font-weight: 500;
+    line-height: 17px;
+    color: white;
+    letter-spacing: 0.5px;
+    position: relative;
+    background-color: #3498DB;
+    position: relative;
+} 
+.btn_closeNew_Mess {
+	display: block;
+	height: inherit;
+	width: inherit;
+	border: none;
+	background-color: #3498DB;
+	color: white;
+	cursor: pointer;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 110;
+	cursor: pointer;
+}
+.btn_closeNew_Mess:hover i {
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.btn_closeNew_Mess i {
+	font-size: 22px;
+	color: white;
+}
+.new_mess_wrapper .new_mess_info {
+	margin-top: 15px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+.new_mess_wrapper .new_mess_foto {
+	background-position: center;
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+}
+.new_mess_wrapper .new_mess_user {
+	height: 40px;
+	width: 240px;
+	margin-left: 10px;
+}
+.new_mess_wrapper .new_mess_user a {
+    max-width: 240px;
+	white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    text-decoration: none;
+	font-weight: 500;
+    font-size: 16px;
+    line-height: 17px;
+    color: #2a5885;
+    letter-spacing: 0.5px;
+}
+.new_mess_wrapper .new_mess_user a:hover {
+	text-decoration: underline;
+}
+
+.new_mess_wrapper .new_mess_user p {
+    max-width: 240px;
+	white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    text-overflow: ellipsis;
+    margin-top: 5px;
+    color: #080D22;
+    display: block;
+}
+
+.new_mess_animation {
+	-webkit-animation-name: fadeInLeft;
+	animation-name: fadeInLeft;
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+}
+  @-webkit-keyframes fadeInLeft {
+  0% {
+  opacity: 0.9;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+  }
+  }
+  @keyframes fadeInLeft {
+  0% {
+  opacity: 0.9;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
+  }
+  100% {
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+  }
+  } 

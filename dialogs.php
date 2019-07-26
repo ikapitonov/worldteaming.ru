@@ -24,12 +24,11 @@
       $sqlDialog = "SELECT userDialogs.id,one_user,second_user,userDialogs.`Date`,last_message,from_who,reed,how_many_reed
                     FROM userDialogs "." ". "$join" ." "."WHERE 
                     (one_user=:one_user OR second_user=:second_user)"." ". "$like" ." ".
-                    "ORDER BY userDialogs.id DESC LIMIT 20";
+                    "ORDER BY userDialogs.date DESC LIMIT 0, 20";
 
       $sqlDialogCounter = "SELECT userDialogs.id,one_user,second_user,userDialogs.`Date`,last_message,from_who,reed,how_many_reed
                     FROM userDialogs "." ". "$join" ." "."WHERE 
-                    (one_user=:one_user OR second_user=:second_user)"." ". "$like" ." ".
-                    "ORDER BY userDialogs.id DESC";
+                    (one_user=:one_user OR second_user=:second_user)"." ". "$like" ." ";
 
           $stmtDialog = $pdo->prepare($sqlDialog);
           $stmtDialog->execute([':one_user' => $_SESSION['id'], ':second_user' => $_SESSION['id'] ]); 
@@ -40,7 +39,6 @@
           $stmtDialogCounter->execute([':one_user' => $_SESSION['id'], ':second_user' => $_SESSION['id'] ]); 
           $itemDialogCounter = $stmtDialogCounter->fetchAll(PDO::FETCH_ASSOC); 
           $itemDialogCounter = count($itemDialogCounter);
-
 
           include_once "phpScripts/formatDateWord.php";
 
@@ -65,6 +63,7 @@
         <div id="dialogs_items_under"></div>
         <div id="dialogs_items">
             <div id="dialogs_up_items"></div>
+            <div id="for_updater"></div>
                <?php if (empty($_GET['search']) || $_GET['search'] == "undefined") {} else {   if ($itemDialog) {  ?>
           
                       <div class="wrapper_wrappCounts">

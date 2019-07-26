@@ -215,6 +215,15 @@ body {
 .Messanger_item {
 	width: 560px;
 }
+.Messanger_item.Messanger_item_load_new {
+	display: flex;
+	align-items: flex-end;
+}
+.messages_loading_new i {
+	font-size: 28px;
+	color: #3498DB;
+	padding-left: 10px;
+}
 .Messanger_item_Inherit {
 	min-width: auto;
 	max-width: 500px;
@@ -342,7 +351,38 @@ body {
 	color: #3498DB;
 	font-size: 30px;
 }
-
+.date_ticker_wrap {
+	width: 560px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: auto;
+	position: relative;
+	margin-bottom: 8px;
+	margin-top: 8px;
+}
+.date_ticker_item {
+	width: auto;
+	padding-left: 20px;
+	padding-right: 20px;
+	height: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 30px;
+	background-color: white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	position: relative;
+	font-size: 14px;
+	color: #777777;
+	font-weight: 300;
+}
+.date_ticker_line {
+	position: absolute;
+	width: inherit;
+	height: 1px;
+	background-color: #D3D9DE;
+}
 
 
 

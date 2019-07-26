@@ -36,6 +36,8 @@ $stmtWants->execute([':parent_id' => $getURLid]);
 $itemWants = $stmtWants->fetchAll(PDO::FETCH_ASSOC); 
 
 include_once "phpScripts/formatDateWord.php";
+include_once "phpScripts/online.php";
+
 
 ?>
 
@@ -59,7 +61,7 @@ include_once "phpScripts/formatDateWord.php";
             <div class="startup_wrap_padding">
               
               <?php if ($itemWants) { 
-                  $sqlUserFor = "SELECT users.id ,name, lastname, url_avatar, status FROM users 
+                  $sqlUserFor = "SELECT users.id ,name, lastname, url_avatar, status, online FROM users 
                                 INNER JOIN users_static_info ON users_static_info.id=users.id  WHERE users.id=:id";
                   $stmtUserFor = $pdo->prepare($sqlUserFor);
               ?>
@@ -87,7 +89,7 @@ include_once "phpScripts/formatDateWord.php";
                         <div style="display: none" class="backImageUrl"><?php echo $UrlImgUserFor; ?></div>
                         <div class="idAnotherUser" style="display: none"><?php echo $itemsUserFor['id']; ?></div>
                         <div style="display: none" class="nubmerOfWants"><?php echo $itemsWants['id']; ?></div>
-                        <div style="display: none" class="statusUserJS"><?php echo $itemsUserFor['status']; ?></div>
+                        <div style="display: none" class="statusUserJS"><?php echo str_online($itemsUserFor['online']); ?></div>
                     </div>
                     <div class="item_forum_Com_right">
                         <div class="forum_Com_right_UP">
